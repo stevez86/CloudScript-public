@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "iojs ./bin/www"
+    "start": "iojs ./bin/www",
+    "stop": "nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.10.1",
