@@ -1,13 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index')
-});
-
-router.get('/api/messages', function(req, res, next) {
-  res.json([
+var data = [
       {
         content: "Hey doc, I'm feeling kind of weird.",
         timestamp: "Today",
@@ -35,6 +29,19 @@ router.get('/api/messages', function(req, res, next) {
           avatar_url: "http://images.wisegeek.com/male-doctor.jpg"
           }
       }
-    ])
+    ]
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index');
 });
+
+router.get('/api/messages', function(req, res, next) {
+  res.json(data);
+});
+
+router.post('/api/messages', function(req, res, next) {
+  data.push(req.body);
+});
+
 module.exports = router;
