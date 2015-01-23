@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
-var http = require('http')
-var postmates = require('../postmates.js')
+// var pm = require('../postmates.js')
+var Postmates = require('postmates');
+var pmcf = require('../postmates_config');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send("Hello world!")
+  res.render('index')
 });
 
 /* Rx page */
@@ -17,18 +17,25 @@ router.get('/rx', function(req, res, next) {
 
 /* POST rx page */
 router.post('/rx', function(req, res, next) {
-  var new_prescription = req.body
 
-  //get dleivery location - default to home?
-  //
-  var options = {
-    dropoff: "456 happy ball st",
-    manifest: new_prescription
-  }
-  //get quote from postmates
+  //create a new order in db?
 
-  postmates.getQuote(options)
-  console.log("getQuote called")
+  var postmates = new Postmates(pmcf.customerId, pmcf.testApiKey);
+
+  var delivery = {
+    pickup_address: "20 McAllister St, San Francisco, CA",
+    dropoff_address: "101 Market St, San Francisco, CA"
+  };
+
+  postmates.quote(delivery, function(err, res) {
+    console.log(res.body); // 799
+  });
+
+});
+
+router.get('/printrequest', function(req, res, next) {
+  // res.send("hi");
+  console.log("hello");
 });
 
 module.exports = router;
