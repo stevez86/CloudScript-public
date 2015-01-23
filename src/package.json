@@ -4,15 +4,26 @@
   "private": true,
   "scripts": {
     "start": "iojs ./bin/www",
-    "stop": "nodemon ./bin/www"
+    "stop": "nodemon ./bin/www",
+    "test": "./node_modules/.bin/supervisor -q -n exit -x ./node_modules/.bin/mocha -- -b"
   },
   "dependencies": {
     "body-parser": "~1.10.1",
     "cookie-parser": "~1.3.3",
     "debug": "~2.1.1",
+    "ejs": "^2.2.2",
     "express": "~4.11.0",
+    "jade": "*",
     "mongoose": "*",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "supertest": "^0.15.0",
+    "supervisor": "^0.6.0",
+    "setup-nocks": "~0.1.1",
+    "nock": "*"
   }
 }
