@@ -8,6 +8,7 @@ describe('OperaLocal', function() {
   before(recorder.before);
 
   describe('GET "/"', function () {
+
     it('is is a valid route', function (done) {
       request("http://localhost:3000")
         .get('/')
@@ -16,6 +17,15 @@ describe('OperaLocal', function() {
           done();
       });
     });
+
+    it('displays a chat window', function(done) {
+      request("http://localhost:3000")
+        .get('/')
+        .end(function(err, res) {
+          expect(res.body).to.include("<h1>Chat!</h1>")
+        })
+    });
+
   });
 
 });

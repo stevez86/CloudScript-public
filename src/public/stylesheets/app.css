@@ -1,0 +1,29 @@
+.avatar {
+  width: 10%;
+}
+
+.full-length {
+  display: inline-block;
+}
+
+.tweet.ng-enter,
+.tweet.ng-move {
+  -webkit-transition: 1s linear all;
+  transition: 1s linear all;
+  opacity: 0;
+}
+
+.tweet.ng-enter.ng-enter-active,
+.tweet.ng-move.ng-move-active {
+ opacity: 1;
+}
+
+.tweet.ng-leave {
+  -webkit-transition: 1s linear all;
+  transition: 1s linear all;
+  opacity: 1;
+}
+
+.tweet.ng-leave.ng-leave-active {
+  opacity: 0;
+}
