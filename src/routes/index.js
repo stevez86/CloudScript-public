@@ -4,11 +4,14 @@ var router = express.Router();
 var Postmates = require('postmates');
 var pmcf = require('../postmates_config');
 var mongoose = require('mongoose');
-var Conversation = require('../models/Conversation');
-var Message = require('../models/Message');
-var Q = require('q');
 var request = require('request')
 var google = require('../google_config.js')
+var Q = require('q');
+
+var Conversation = require('../models/Conversation');
+var Message = require('../models/Message');
+var User = require('../models/User');
+var Prescription = require('../models/Prescription');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
