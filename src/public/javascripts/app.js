@@ -126,8 +126,6 @@
         } else {
           console.log("Success", authData)
         }
-      }, {
-        remember: "sessionOnly"
       })
     }
   }]);
