@@ -2,4 +2,4 @@ src/database_config.js
 src/node_modules/*
 src/postmates_config.js
 src/google_config.js
-npm-debug.lo
+npm-debug.log
