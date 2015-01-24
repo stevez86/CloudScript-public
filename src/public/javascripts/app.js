@@ -97,15 +97,15 @@
       });
     }
 
+    this.orderScript = function() {
+      console.log("Script ordered!")
+      // PLACE ORDER WITH POSTMATES
+    }
+
   }])
 
   app.controller('newScriptController', ['$scope', '$http', 'newScript', function($scope, $http, newScript) {
     $scope.newScript = newScript
-
-    this.orderScript = function() {
-      // PLACE ORDER WITH POSTMATES
-    }
-
   }]);
 
   app.directive('chat', function(){
