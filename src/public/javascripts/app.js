@@ -11,6 +11,10 @@
 
     $scope.master = {};
 
+    //NEED: user id and doctor id
+    //$scope.user
+    //$scope.doctor
+
     $scope.update = function(rx) {
       $scope.master = angular.copy(rx);
     };
@@ -20,9 +24,12 @@
     };
 
     $scope.submit = function(rx) {
-      //convert rx to include
-      // console.log("SUBMITTED")
-      $http.post('/rx',rx)
+      //need to get these values form the database
+      rx.doctor = "#";
+      rx.user = "#";
+
+      $http.post('/orders',rx)
+
       $scope.new_rx_response = "RX submitted!"
     };
 
@@ -41,7 +48,7 @@
   app.directive('rx', function(){
     return {
       restrict: 'E',
-      templateUrl: '../partials/rx.html',
+      templateUrl: '../partials/new_rx_form.html',
     };
   });
 

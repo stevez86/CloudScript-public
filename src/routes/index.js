@@ -11,21 +11,29 @@ router.get('/', function(req, res, next) {
 
 /* Rx page */
 /* GET rx page */
-router.get('/rx', function(req, res, next) {
+router.get('/rx/new', function(req, res, next) {
   res.render("rx")
 });
 
 /* POST rx page */
-router.post('/rx', function(req, res, next) {
+router.post('/orders', function(req, res, next) {
+  //create a new order with the manifest
 
-  //create a new order in db?
+  var new_order = req.body;
 
-  var postmates = new Postmates(pmcf.customerId, pmcf.testApiKey);
+  //get pickup address : google maps api
+  var pickup_address = "20 McAllister St, San Francisco, CA 94102";
+
+  //get dropoff address: MVP: user's home address
+  var dropoff_address = "101 Market St, San Francisco, CA";
 
   var delivery = {
-    pickup_address: "20 McAllister St, San Francisco, CA",
-    dropoff_address: "101 Market St, San Francisco, CA"
+    pickup_address: pickup_address,
+    dropoff_address: dropoff_address
   };
+
+  //BELOW COMMENTED OUT JUST FOR TESTING - DND
+  var postmates = new Postmates(pmcf.customerId, pmcf.testApiKey);
 
   postmates.quote(delivery, function(err, res) {
     console.log(res.body); // 799
@@ -33,9 +41,32 @@ router.post('/rx', function(req, res, next) {
 
 });
 
-router.get('/printrequest', function(req, res, next) {
-  // res.send("hi");
-  console.log("hello");
+router.param('doctor', function(req, res, next, id){
+
+  // User.find(id, function(err, doctor){
+  //   if (err) {
+  //     next(err);
+  //   } else if (doctor) {
+  //     req.doctor = doctor;
+  //     next();
+  //   } else {
+  //     next(new Error('failed to load doctor'));
+  //   }
+  // });
+});
+
+router.param('patient', function(req, res, next, id){
+
+  // User.find(id, function(err, patient){
+  //   if (err) {
+  //     next(err);
+  //   } else if (patient) {
+  //     req.patient = patient;
+  //     next();
+  //   } else {
+  //     next(new Error('failed to load patient'));
+  //   }
+  // });
 });
 
 module.exports = router;
