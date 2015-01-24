@@ -11,7 +11,9 @@
         // Delete all records in the FireBase database
         FirebaseDB.$remove();
 
-        FirebaseDB.$push({prescriptions: []})
+        FirebaseDB.$set("prescriptions", "false");
+
+        FirebaseDB.$asObject().$save();
 
        // this uses AngularFire to create the synchronized array
        return FirebaseDB.$asArray();
@@ -19,10 +21,6 @@
   ]);
 
    app.controller('RxController', ['$scope', '$http', '$firebase', 'newScript', function($scope, $http, $firebase, newScript){
-
-      var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
-
-      var FirebaseDB = $firebase(ref);
 
       $scope.master = {};
 
@@ -80,21 +78,33 @@
 
   }]);
 
-  app.service('newScript', ['$http', function($http) {
+  app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
     var self = this;
 
-    this.newPrescription = false;
+    // chats.script = true;
+    // console.log(chats)
+    // this.script.$set({newPrescription: false})
+
     this.updateUserPrescriptions = function(manifest) {
       // $http.post("LINK TO MONGODB", {INFO ABOUT SCRIPT & USER})
     };
 
     this.newOrder = function(rx) {
-      $http.post('/orders', rx)
-      .success(function(data, status, headers, config) {
-        self.orderData = data;
+      var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
+      var sync = $firebase(ref);
+      sync.$set("foo", "bar").then(function(ref) {
+        sync.$set("foo", "test!");
+        $http.post('/orders', rx)
+        .success(function(data, status, headers, config) {
+          self.orderData = data;
 
-        self.newPrescription = true;
+          // self.script.$update({newPrescription: true});
+          sync.$asObject().$save()
+          console.log(sync.$asObject());
+          // self.script.$save();
+        });
       });
+
     }
 
     this.orderScript = function() {
