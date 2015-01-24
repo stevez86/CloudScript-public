@@ -64,7 +64,7 @@ router.post('/orders', function(req, res, next) {
   var pickup_address = "20 McAllister St, San Francisco, CA 94102";
 
   //get dropoff address: MVP: user's home address
-  var dropoff_address = "633+folsom+St,+San+Francisco,+CA";
+  var dropoff_address = "874+fell+St,+San+Francisco,+CA";
 
   //api call to retrieve lat and lng of dropoff address
   request('https://maps.googleapis.com/maps/api/geocode/json?address=' + dropoff_address + '&key=' + google.googleApi, function(error, response, body){
@@ -75,8 +75,8 @@ router.post('/orders', function(req, res, next) {
     //api call to retrieve walgreens within 5000 units of lat + lng
     request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&name=walgreens&key=' + google.googleApi, function(error, response, body){
       var walgreens = (JSON.parse(body))
-      var dropoff_address = walgreens.results[0].vicinity
-      console.log(dropoff_address)
+      var pickup_address = walgreens.results[0].vicinity
+      console.log(pickup_address)
     })
   })
 
