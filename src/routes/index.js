@@ -22,7 +22,6 @@ router.get('/api/messages', function(req, res, next) {
   Conversation.create();
   // Hard coded find for conversation - change when authentication is implemented
   Conversation.findOne("54c2e4a1b976b78fbceb112d", function(err, results) {
-    console.log(results.messages)
     res.json(results.messages);
   })
 });
