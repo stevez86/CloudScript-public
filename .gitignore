@@ -1,2 +1,3 @@
 src/database_config.js
+src/postmates_config.js
 src/node_modules/*
