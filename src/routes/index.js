@@ -7,6 +7,8 @@ var mongoose = require('mongoose');
 var Conversation = require('../models/Conversation');
 var Message = require('../models/Message');
 var Q = require('q');
+var request = require('request')
+var google = require('../google_config.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -59,10 +61,23 @@ router.post('/orders', function(req, res, next) {
   var new_order = req.body;
 
   //get pickup address : google maps api
-  var pickup_address = "20 McAllister St, San Francisco, CA 94102";
+  var pickup_address;
 
   //get dropoff address: MVP: user's home address
-  var dropoff_address = "101 Market St, San Francisco, CA";
+  var dropoff_address = "874+fell+St,+San+Francisco,+CA";
+
+  //api call to retrieve lat and lng of dropoff address
+  request('https://maps.googleapis.com/maps/api/geocode/json?address=' + dropoff_address + '&key=' + google.googleApi, function(error, response, body){
+    var latLong = JSON.parse(body)
+    var lat = latLong.results[0].geometry.location.lat
+    var lng = latLong.results[0].geometry.location.lng
+
+    //api call to retrieve walgreens within 5000 units of lat + lng
+    request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&name=walgreens&key=' + google.googleApi, function(error, response, body){
+      var walgreens = JSON.parse(body)
+      pickup_address = walgreens.results[0].vicinity
+    })
+  })
 
   var delivery = {
     pickup_address: pickup_address,
