@@ -2,8 +2,8 @@
   var app = angular.module('CloudScript', ['ngAnimate', 'firebase']);
 
   app.factory("chatMessages", ["$firebase", function($firebase) {
-       // create a reference to the Firebase where we will store our data
-       var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
+        // create a reference to the Firebase where we will store our data
+        var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
         // Create new FireBase object to perform tasks
         var FirebaseDB = $firebase(ref);
@@ -108,6 +108,30 @@
     $scope.newScript = newScript
   }]);
 
+  app.controller('loginController', ['$scope', '$http', function($scope, $http){
+    var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
+
+    $scope.credentials = {
+      username: '',
+      password: ''
+    }
+
+    $scope.submit = function(credentials){
+      ref.authWithPassword({
+        email: $scope.credentials.username,
+        password: $scope.credentials.password
+      }, function(error, authData) {
+        if (error) {
+          console.log("Error", error)
+        } else {
+          console.log("Success", authData)
+        }
+      }, {
+        remember: "sessionOnly"
+      })
+    }
+  }]);
+
   app.directive('chat', function(){
     return {
       restrict: 'E',
@@ -122,11 +146,17 @@
     };
   });
 
-    app.directive('newscript', function(){
+  app.directive('newscript', function(){
     return {
       restrict: 'E',
       templateUrl: '../partials/newscript.html',
     };
   });
 
+  app.directive('login', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/login.html'
+    }
+  })
 })();
