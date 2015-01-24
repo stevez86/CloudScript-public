@@ -16,13 +16,7 @@
     }
   ]);
 
-  app.controller('ChatController', ['$scope', '$http', 'chatMessages', function($scope, $http, chatMessages) {
-
-    // Investigate ways to remove possible race condition of adding records to Firebase before all records removed from FireBase
-
-    $scope.messages = chatMessages
-
-  app.controller('RxController', ['$scope', '$http', function($scope, $http){
+   app.controller('RxController', ['$scope', '$http', function($scope, $http){
 
     $scope.master = {};
 
@@ -31,11 +25,11 @@
     //$scope.doctor
 
     $scope.update = function(rx) {
-      $scope.master = angular.copy(rx);
+      // $scope.master = angular.copy(rx);
     };
 
     $scope.reset = function() {
-      $scope.rx = angular.copy($scope.master);
+      // $scope.rx = angular.copy($scope.master);
     };
 
     $scope.submit = function(rx) {
@@ -51,6 +45,13 @@
     $scope.reset();
 
   }]);
+
+
+  app.controller('ChatController', ['$scope', '$http', 'chatMessages', function($scope, $http, chatMessages) {
+
+    // Investigate ways to remove possible race condition of adding records to Firebase before all records removed from FireBase
+
+    $scope.messages = chatMessages
 
     // Pulls all records from MongoDB and adds them to Firebase for display in client browser
 
