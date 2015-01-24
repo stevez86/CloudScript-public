@@ -6,43 +6,50 @@
        var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
         // Create new FireBase object to perform tasks
-        var chatDB = $firebase(ref);
+        var FirebaseDB = $firebase(ref);
 
         // Delete all records in the FireBase database
-        chatDB.$remove();
+        FirebaseDB.$remove();
+
+        FirebaseDB.$push({prescriptions: []})
 
        // this uses AngularFire to create the synchronized array
-       return chatDB.$asArray();
+       return FirebaseDB.$asArray();
     }
   ]);
 
-   app.controller('RxController', ['$scope', '$http', function($scope, $http){
+   app.controller('RxController', ['$scope', '$http', '$firebase', 'newScript', function($scope, $http, $firebase, newScript){
 
-    $scope.master = {};
+      var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
-    //NEED: user id and doctor id
-    //$scope.user
-    //$scope.doctor
+      var FirebaseDB = $firebase(ref);
 
-    $scope.update = function(rx) {
-      // $scope.master = angular.copy(rx);
-    };
+      $scope.master = {};
 
-    $scope.reset = function() {
-      // $scope.rx = angular.copy($scope.master);
-    };
+      //NEED: user id and doctor id
+      //$scope.user
+      //$scope.doctor
 
-    $scope.submit = function(rx) {
-      //need to get these values form the database
-      rx.doctor = "#";
-      rx.user = "#";
+      $scope.update = function(rx) {
+        // $scope.master = angular.copy(rx);
+      };
 
-      $http.post('/orders',rx)
+      $scope.reset = function() {
+        // $scope.rx = angular.copy($scope.master);
+      };
 
-      $scope.new_rx_response = "RX submitted!"
-    };
+      $scope.submit = function(rx) {
+        //need to get these values form the database
+        // rx.doctor = "#";
+        // rx.user = "#";
 
-    $scope.reset();
+        newScript.updateUserPrescriptions(rx);
+        newScript.newOrder(rx);
+
+        $scope.new_rx_response = "RX submitted!"
+      };
+
+      $scope.reset();
 
   }]);
 
@@ -73,6 +80,34 @@
 
   }]);
 
+  app.service('newScript', ['$http', function($http) {
+    var self = this;
+
+    this.newPrescription = false;
+    this.updateUserPrescriptions = function(manifest) {
+      // $http.post("LINK TO MONGODB", {INFO ABOUT SCRIPT & USER})
+    };
+
+    this.newOrder = function(rx) {
+      $http.post('/orders', rx)
+      .success(function(data, status, headers, config) {
+        self.orderData = data;
+
+        self.newPrescription = true;
+      });
+    }
+
+    this.orderScript = function() {
+      console.log("Script ordered!")
+      // PLACE ORDER WITH POSTMATES
+    }
+
+  }])
+
+  app.controller('newScriptController', ['$scope', '$http', 'newScript', function($scope, $http, newScript) {
+    $scope.newScript = newScript
+  }]);
+
   app.directive('chat', function(){
     return {
       restrict: 'E',
@@ -84,6 +119,13 @@
     return {
       restrict: 'E',
       templateUrl: '../partials/new_rx_form.html',
+    };
+  });
+
+    app.directive('newscript', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/newscript.html',
     };
   });
 
