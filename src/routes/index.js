@@ -70,11 +70,20 @@ router.post('/orders', function(req, res, next) {
   };
 
   //BELOW COMMENTED OUT JUST FOR TESTING - DND
-  var postmates = new Postmates(pmcf.customerId, pmcf.testApiKey);
+  // var postmates = new Postmates(pmcf.customerId, pmcf.testApiKey);
 
-  postmates.quote(delivery, function(err, res) {
-    console.log(res.body); // 799
-  });
+  // postmates.quote(delivery, function(err, res) {
+  //   console.log(res.body); // 799
+  // });
+
+  res.json({ kind: 'delivery_quote',
+    fee: 1350,
+    created: '2015-01-24T02:04:17Z',
+    expires: '2015-01-24T02:09:17Z',
+    currency: 'usd',
+    duration: 60,
+    dropoff_eta: '2015-01-24T03:09:17Z',
+    id: 'dqt_KBAxcFWu1rKuPV' });
 
 });
 
