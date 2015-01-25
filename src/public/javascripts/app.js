@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('CloudScript', ['ngAnimate', 'firebase']);
+  var app = angular.module('CloudScript', ['ngAnimate', 'ngCookies', 'firebase']);
 
   app.factory("chatMessages", ["$firebase", function($firebase) {
         // create a reference to the Firebase where we will store our data
@@ -108,7 +108,7 @@
     $scope.newScript = newScript
   }]);
 
-  app.controller('loginController', ['$scope', '$http', function($scope, $http){
+  app.controller('loginController', ['$scope','$cookies', '$http', function($scope,$cookies, $http){
     var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
     $scope.credentials = {
@@ -116,18 +116,25 @@
       password: ''
     }
 
+    $cookies.id = null
+
     $scope.submit = function(credentials){
       console.log("submit was called")
       ref.authWithPassword({
         email: $scope.credentials.username,
         password: $scope.credentials.password
       }, function(error, authData) {
+        $scope.credentials = {
+          username: '',
+          password: ''
+        }
+        $scope.login.$setPristine();
         if (error) {
           console.log("Error", error)
         } else {
           console.log("Success", authData)
+          $cookies.id = authData.uid
         }
-        console.log(auth)
       })
     }
   }]);
@@ -140,10 +147,16 @@
       password: ''
     }
     $scope.submit = function(credentials){
+
       ref.createUser({
         email    : $scope.credentials.username,
         password : $scope.credentials.password
       }, function(error) {
+        $scope.credentials = {
+          username: '',
+          password: ''
+        }
+        $scope.register.$setPristine();
         if (error === null) {
           console.log("User created successfully");
         } else {
