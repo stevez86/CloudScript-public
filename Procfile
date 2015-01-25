@@ -1,1 +1,1 @@
-web: node ./src/bin/www
+web: iojs ./src/bin/www

@@ -129,4 +129,20 @@
     };
   });
 
+  app.controller('HomepageController', ['$scope', '$http', function($scope, $http) {
+    this.login = function() {
+      $http.get('/login')
+        .success(function(data) {
+          $('body').html(data);
+        })
+    }
+
+    this.signup = function() {
+      $http.get('/signup')
+        .success(function(data) {
+          $('body').html(data);
+        })
+    }
+  }]);
+
 })();
