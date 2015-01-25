@@ -1,12 +1,10 @@
-src/database_config.js
+.gitignore
 src/node_modules/
-src/postmates_config.js
-src/google_config.js
 npm-debug.log
 cloudscript.pem
 node_modules/
 .elasticbeanstalk/
-.gitignore
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+package.json

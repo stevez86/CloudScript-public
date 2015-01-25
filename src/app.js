@@ -4,9 +4,8 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var database_connection = require('./database_config');
 var mongoose = require('mongoose');
-mongoose.connect(database_connection);
+mongoose.connect(process.env.DBPATH);
 
 var routes = require('./routes/index');
 
@@ -57,6 +56,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;
