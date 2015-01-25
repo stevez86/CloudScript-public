@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "iojs ./src/bin/www",
-    "stop": "nodemon ./src/bin/www",
+    "stop": "DBPATH='mongodb://heroku_app33473567:5ijlpjuimtip0a2e8nv60o3gdc@ds031661.mongolab.com:31661/heroku_app33473567' GOOGLEAPI='AIzaSyBAXUBvubtIPTOfPLKeA_FctoMHWtAX62k' POSTMATES_CUSTOMER_ID='cus_KAlyct4UbNrdW-' POSTMATES_TEST_API_KEY='de301086-c74e-4cd5-ae7e-e62d8e1ffdc4' nodemon ./src/bin/www",
     "test": "./src/node_modules/.bin/supervisor -q -n exit -x ./node_modules/.bin/mocha -- -b"
   },
   "dependencies": {
