@@ -116,7 +116,7 @@
       password: ''
     }
 
-    this.submit = function(credentials){
+    $scope.submit = function(credentials){
       console.log("submit was called")
       ref.authWithPassword({
         email: $scope.credentials.username,
@@ -139,7 +139,7 @@
       username: '',
       password: ''
     }
-    this.submit = function(credentials){
+    $scope.submit = function(credentials){
       ref.createUser({
         email    : $scope.credentials.username,
         password : $scope.credentials.password
@@ -178,6 +178,13 @@
     return {
       restrict: 'E',
       templateUrl: '../partials/login.html'
+    }
+  })
+
+  app.directive('register', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/register.html'
     }
   })
 })();
