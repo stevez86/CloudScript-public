@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('CloudScript', ['ngAnimate', 'firebase']);
+  var app = angular.module('CloudScript', ['ngAnimate', 'firebase', 'ngRoute']);
 
   app.factory("chatMessages", ["$firebase", function($firebase) {
        // create a reference to the Firebase where we will store our data
@@ -130,19 +130,37 @@
   });
 
   app.controller('HomepageController', ['$scope', '$http', function($scope, $http) {
-    this.login = function() {
-      $http.get('/login')
-        .success(function(data) {
-          $('body').html(data);
-        })
-    }
 
-    this.signup = function() {
-      $http.get('/signup')
-        .success(function(data) {
-          $('body').html(data);
-        })
-    }
   }]);
 
+  app.controller('LoginController', ['$scope', '$http', function($scope, $http) {
+
+  }]);
+
+  app.config(function($routeProvider) {
+    $routeProvider
+
+    // route for the home page
+    .when('/', {
+        templateUrl : 'partials/homepage.html',
+        controller  : 'HomepageController'
+    })
+
+    // route for the about page
+    .when('/login', {
+        templateUrl : 'partials/login.html',
+        controller  : 'LoginController'
+    })
+
+    .when('/signup', {
+        templateUrl : 'partials/signup.html',
+        controller  : 'SignupController'
+    })
+
+    .when('/index', {
+        templateUrl : 'partials/loggedin.html'
+    })
+  });
+
 })();
+

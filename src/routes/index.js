@@ -15,7 +15,7 @@ var Prescription = require('../models/Prescription');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('homepage');
+  res.render('index');
 });
 
 router.get('/api/messages', function(req, res, next) {
@@ -131,13 +131,5 @@ router.param('patient', function(req, res, next, id){
   //   }
   // });
 });
-
-router.get('/login', function(req, res) {
-  res.render('login')
-})
-
-router.get('/signup', function(req, res) {
-  res.render('signup')
-})
 
 module.exports = router;
