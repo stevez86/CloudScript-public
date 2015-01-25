@@ -21,14 +21,11 @@ router.get('/', function(req, res, next) {
 router.get('/api/messages', function(req, res, next) {
   Conversation.create();
   // Hard coded find for conversation - change when authentication is implemented
-  Conversation.findOne("54c2e4a1b976b78fbceb112d", function(err, results) {
-    console.log(results.messages)
-    res.json(results.messages);
-  })
+  res.json(Conversation.find());
 });
 
 router.post('/api/messages', function(req, res, next) {
-  Conversation.findOne("54c2e4a1b976b78fbceb112d").exec(function(err, conversation) {
+  Conversation.findOne().exec(function(err, conversation) {
     Message.create(req.body)
     .then(function(message) {
       var deferred = Q.defer();

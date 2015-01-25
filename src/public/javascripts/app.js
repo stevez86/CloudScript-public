@@ -116,7 +116,8 @@
       password: ''
     }
 
-    $scope.submit = function(credentials){
+    this.submit = function(credentials){
+      console.log("submit was called")
       ref.authWithPassword({
         email: $scope.credentials.username,
         password: $scope.credentials.password
@@ -126,7 +127,29 @@
         } else {
           console.log("Success", authData)
         }
+        console.log(auth)
       })
+    }
+  }]);
+
+  app.controller('registerController', ['$scope', '$http', function($scope, $http) {
+    var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
+
+    $scope.credentials = {
+      username: '',
+      password: ''
+    }
+    this.submit = function(credentials){
+      ref.createUser({
+        email    : $scope.credentials.username,
+        password : $scope.credentials.password
+      }, function(error) {
+        if (error === null) {
+          console.log("User created successfully");
+        } else {
+          console.log("Error creating user:", error);
+        }
+      });
     }
   }]);
 
