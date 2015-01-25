@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./src/bin/www",
-    "stop": "nodemon ./src/bin/www",
-    "test": "./src/node_modules/.bin/supervisor -q -n exit -x ./node_modules/.bin/mocha -- -b"
+    "start": "node ./bin/www",
+    "stop": "nodemon ./bin/www",
+    "test": "./node_modules/.bin/supervisor -q -n exit -x ./node_modules/.bin/mocha -- -b"
   },
   "dependencies": {
     "body-parser": "~1.10.1",
