@@ -43,7 +43,7 @@ router.post('/api/messages', function(req, res, next) {
       return deferred.promise
     })
     .then(function() {
-      res.send(200);
+      res.sendStatus(200);
     })
   })
 });
