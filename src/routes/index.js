@@ -1,11 +1,8 @@
 var express = require('express');
 var router = express.Router();
-// var pm = require('../postmates.js')
 var Postmates = require('postmates');
-var pmcf = require('../postmates_config');
 var mongoose = require('mongoose');
-var request = require('request')
-var google = require('../google_config.js')
+var request = require('request');
 var Q = require('q');
 
 var Conversation = require('../models/Conversation');
@@ -18,16 +15,18 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+/* GET persisted message history */
 router.get('/api/messages', function(req, res, next) {
-  Conversation.create();
   // Hard coded find for conversation - change when authentication is implemented
-  Conversation.findOne("54c2e4a1b976b78fbceb112d", function(err, results) {
+  Conversation.findOne("54c56f10e4b06ac679179453", function(err, results) {
     res.json(results.messages);
   })
 });
 
+/* POST message to be persisted in MongoDB */
 router.post('/api/messages', function(req, res, next) {
-  Conversation.findOne("54c2e4a1b976b78fbceb112d").exec(function(err, conversation) {
+  // Hard coded find for conversation - change when authentication is implemented
+  Conversation.findOne("54c56f10e4b06ac679179453").exec(function(err, conversation) {
     Message.create(req.body)
     .then(function(message) {
       var deferred = Q.defer();
@@ -44,19 +43,12 @@ router.post('/api/messages', function(req, res, next) {
       return deferred.promise
     })
     .then(function() {
-      console.log(conversation.messages);
-      res.send(200);
+      res.sendStatus(200);
     })
   })
 });
 
-/* Rx page */
-/* GET rx page */
-router.get('/rx/new', function(req, res, next) {
-  res.render("rx")
-});
-
-/* POST rx page */
+/* POST to send order info to Postmates and recieve quote */
 router.post('/orders', function(req, res, next) {
   //create a new order with the manifest
 
@@ -69,13 +61,13 @@ router.post('/orders', function(req, res, next) {
   var dropoff_address = "874+fell+St,+San+Francisco,+CA";
 
   //api call to retrieve lat and lng of dropoff address
-  request('https://maps.googleapis.com/maps/api/geocode/json?address=' + dropoff_address + '&key=' + google.googleApi, function(error, response, body){
+  request('https://maps.googleapis.com/maps/api/geocode/json?address=' + dropoff_address + '&key=' + process.env.GOOGLEAPI, function(error, response, body){
     var latLong = JSON.parse(body)
     var lat = latLong.results[0].geometry.location.lat
     var lng = latLong.results[0].geometry.location.lng
 
     //api call to retrieve walgreens within 5000 units of lat + lng
-    request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&name=walgreens&key=' + google.googleApi, function(error, response, body){
+    request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&name=walgreens&key=' + process.env.GOOGLEAPI, function(error, response, body){
       var walgreens = JSON.parse(body)
       pickup_address = walgreens.results[0].vicinity
     })
@@ -87,7 +79,7 @@ router.post('/orders', function(req, res, next) {
   };
 
   //BELOW COMMENTED OUT JUST FOR TESTING - DND
-  // var postmates = new Postmates(pmcf.customerId, pmcf.testApiKey);
+  // var postmates = new Postmates(process.env.POSTMATES_CUSTOMER_ID, process.env.POSTMATES_TEST_API_KEY);
 
   // postmates.quote(delivery, function(err, res) {
   //   console.log(res.body); // 799
@@ -104,7 +96,7 @@ router.post('/orders', function(req, res, next) {
 
 });
 
-router.param('doctor', function(req, res, next, id){
+// router.param('doctor', function(req, res, next, id){
 
   // User.find(id, function(err, doctor){
   //   if (err) {
@@ -116,9 +108,9 @@ router.param('doctor', function(req, res, next, id){
   //     next(new Error('failed to load doctor'));
   //   }
   // });
-});
+// });
 
-router.param('patient', function(req, res, next, id){
+// router.param('patient', function(req, res, next, id){
 
   // User.find(id, function(err, patient){
   //   if (err) {
@@ -130,6 +122,6 @@ router.param('patient', function(req, res, next, id){
   //     next(new Error('failed to load patient'));
   //   }
   // });
-});
+// });
 
 module.exports = router;
