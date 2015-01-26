@@ -1,9 +1,9 @@
 (function() {
-  var app = angular.module('CloudScript', ['ngAnimate', 'firebase', 'ngRoute']);
+  var app = angular.module('CloudScript', ['ngAnimate', 'ngCookies', 'firebase', 'ngRoute']);
 
   app.factory("chatMessages", ["$firebase", function($firebase) {
-       // create a reference to the Firebase where we will store our data
-       var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
+        // create a reference to the Firebase where we will store our data
+        var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
         // Create new FireBase object to perform tasks
         var FirebaseDB = $firebase(ref);
@@ -116,6 +116,64 @@
     $scope.newScript = newScript
   }]);
 
+  app.controller('loginController', ['$scope','$cookies', '$http', function($scope,$cookies, $http){
+    var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
+
+    $scope.credentials = {
+      username: '',
+      password: ''
+    }
+
+    $cookies.id = null
+
+    $scope.submit = function(credentials){
+      console.log("submit was called")
+      ref.authWithPassword({
+        email: $scope.credentials.username,
+        password: $scope.credentials.password
+      }, function(error, authData) {
+        // $scope.credentials = {
+        //   username: '',
+        //   password: ''
+        // }
+        // $scope.login.$setPristine();
+        if (error) {
+          console.log("Error", error)
+        } else {
+          console.log("Success", authData)
+          $cookies.id = authData.uid
+        }
+      })
+    }
+  }]);
+
+  app.controller('registerController', ['$scope', '$http', function($scope, $http) {
+    var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
+
+    $scope.credentials = {
+      username: '',
+      password: ''
+    }
+    $scope.submit = function(credentials){
+
+      ref.createUser({
+        email    : $scope.credentials.username,
+        password : $scope.credentials.password
+      }, function(error) {
+        $scope.credentials = {
+          username: '',
+          password: ''
+        }
+        $scope.register.$setPristine();
+        if (error === null) {
+          console.log("User created successfully");
+        } else {
+          console.log("Error creating user:", error);
+        }
+      });
+    }
+  }]);
+
   app.directive('chat', function(){
     return {
       restrict: 'E',
@@ -130,7 +188,7 @@
     };
   });
 
-    app.directive('newscript', function(){
+  app.directive('newscript', function(){
     return {
       restrict: 'E',
       templateUrl: '../partials/newscript.html',
@@ -171,4 +229,3 @@
   });
 
 })();
-
