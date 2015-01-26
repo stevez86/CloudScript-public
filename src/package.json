@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "iojs ./bin/www",
     "stop": "nodemon ./bin/www",
     "test": "./node_modules/.bin/supervisor -q -n exit -x ./node_modules/.bin/mocha -- -b"
   },
