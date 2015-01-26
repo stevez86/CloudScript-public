@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   address:        String,
   name:           String,
+  firebase_id     String,
   home_address:   String,
   avatar_url:     String,
   doctor:         Boolean,

@@ -1,6 +1,22 @@
 (function() {
   var app = angular.module('CloudScript', ['ngAnimate', 'ngCookies', 'firebase', 'ngRoute']);
 
+  var loggedIn = function(id) {
+    if (!id || User.count({'firebase_id': id}) === 0) {
+      return false
+    } else if (User.count({'firebase_id': id}) !== 1) {
+      return "error"
+    } else {
+      if (User.findOne({'firedbase_id': id}).doctor && User.findOne({'firedbase_id': id}).patient){
+        return "error"
+      } else if(User.findOne({'firedbase_id': id}).doctor){
+        return "doctor"
+      } else if (User.findOne({'firedbase_id': id}).patient) {
+        return "patient"
+      }
+    }
+  }
+
   app.factory("chatMessages", ["$firebase", function($firebase) {
         // create a reference to the Firebase where we will store our data
         var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
