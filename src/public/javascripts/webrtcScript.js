@@ -182,9 +182,9 @@ function init() {
     }, function(stream) {
       document.getElementById('you').src = URL.createObjectURL(stream);
       document.getElementById('you').play();
-      //videos.push(document.getElementById('you'));
-      //rtc.attachStream(stream, 'you');
-      //subdivideVideos();
+      // videos.push(document.getElementById('you'));
+      rtc.attachStream(stream, 'you');
+      // subdivideVideos();
     });
   } else {
     alert('Your browser is not supported or you have to turn on flags. In chrome you go to chrome://flags and turn on Enable PeerConnection remember to restart chrome');
