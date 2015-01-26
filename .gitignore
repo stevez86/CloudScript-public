@@ -4,4 +4,4 @@ src/postmates_config.js
 src/google_config.js
 npm-debug.log
 cloudscript.pem
-./node_modules/
+node_modules/
