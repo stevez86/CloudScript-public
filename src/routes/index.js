@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-// var pm = require('../postmates.js')
 var Postmates = require('postmates');
 var mongoose = require('mongoose');
-var request = require('request')
+var request = require('request');
 var Q = require('q');
 
 var Conversation = require('../models/Conversation');
@@ -16,6 +15,11 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/video/test', function(req, res, next) {
+  res.render('video');
+})
+
+/* GET persisted message history */
 router.get('/api/messages', function(req, res, next) {
   // Hard coded find for conversation - change when authentication is implemented
   Conversation.findOne("54c56f10e4b06ac679179453", function(err, results) {
@@ -23,7 +27,11 @@ router.get('/api/messages', function(req, res, next) {
   })
 });
 
+/* POST message to be persisted in MongoDB */
 router.post('/api/messages', function(req, res, next) {
+
+  // Hard coded find for conversation - change when authentication is implemented
+
   Conversation.findOne("54c56f10e4b06ac679179453").exec(function(err, conversation) {
     Message.create(req.body)
     .then(function(message) {
@@ -41,19 +49,12 @@ router.post('/api/messages', function(req, res, next) {
       return deferred.promise
     })
     .then(function() {
-      console.log(conversation.messages);
-      res.send(200);
+      res.sendStatus(200);
     })
   })
 });
 
-/* Rx page */
-/* GET rx page */
-router.get('/rx/new', function(req, res, next) {
-  res.render("rx")
-});
-
-/* POST rx page */
+/* POST to send order info to Postmates and recieve quote */
 router.post('/orders', function(req, res, next) {
   //create a new order with the manifest
 
@@ -101,7 +102,7 @@ router.post('/orders', function(req, res, next) {
 
 });
 
-router.param('doctor', function(req, res, next, id){
+// router.param('doctor', function(req, res, next, id){
 
   // User.find(id, function(err, doctor){
   //   if (err) {
@@ -113,9 +114,9 @@ router.param('doctor', function(req, res, next, id){
   //     next(new Error('failed to load doctor'));
   //   }
   // });
-});
+// });
 
-router.param('patient', function(req, res, next, id){
+// router.param('patient', function(req, res, next, id){
 
   // User.find(id, function(err, patient){
   //   if (err) {
@@ -127,6 +128,6 @@ router.param('patient', function(req, res, next, id){
   //     next(new Error('failed to load patient'));
   //   }
   // });
-});
+// });
 
 module.exports = router;
