@@ -14,9 +14,9 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
       .success(function(data, status, headers, config) {
         self.orderData = data;
 
-        self.script["prescriptions"] = true;
+        self.script.prescriptions = true;
         self.script.$save().then(function(ref) {}, function(error) {});
-        console.log(self.script)
+        console.log(self.script);
         // var obj = $firebase(ref).$asObject();
         // obj.prescriptions = "true";
         // obj.$save().then(function(ref) {
@@ -25,11 +25,11 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
         //   console.log("Error:", error);
         // });
       });
-  }
+  };
 
   this.orderScript = function() {
-    console.log("Script ordered!")
+    console.log("Script ordered!");
     // PLACE ORDER WITH POSTMATES
-  }
+  };
 
-}])
+}]);

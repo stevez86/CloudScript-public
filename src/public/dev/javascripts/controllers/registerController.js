@@ -4,7 +4,8 @@ app.controller('registerController', ['$scope', '$http', function($scope, $http)
   $scope.credentials = {
     username: '',
     password: ''
-  }
+  };
+
   $scope.submit = function(credentials){
 
     ref.createUser({
@@ -14,7 +15,7 @@ app.controller('registerController', ['$scope', '$http', function($scope, $http)
       $scope.credentials = {
         username: '',
         password: ''
-      }
+      };
       $scope.register.$setPristine();
       if (error === null) {
         console.log("User created successfully");
@@ -22,5 +23,5 @@ app.controller('registerController', ['$scope', '$http', function($scope, $http)
         console.log("Error creating user:", error);
       }
     });
-  }
+  };
 }]);

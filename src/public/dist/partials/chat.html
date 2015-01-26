@@ -1,0 +1,1 @@
+<h2>Messages</h2><div id=chat ng-controller="ChatController as ChatCtrl"><div ng-repeat="message in messages"><div><img class=avatar ng-src={{message.author.avatar_url}}> {{message.author.name}} <span>{{message.timestamp}}</span></div>{{message.content}}</div><input type=text ng-model=text> <button class=formbutton ng-click=ChatCtrl.sendText(text)>Send</button></div>

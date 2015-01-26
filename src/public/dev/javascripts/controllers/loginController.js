@@ -4,12 +4,12 @@ app.controller('loginController', ['$scope','$cookies', '$http', function($scope
   $scope.credentials = {
     username: '',
     password: ''
-  }
+  };
 
-  $cookies.id = null
+  $cookies.id = null;
 
   $scope.submit = function(credentials){
-    console.log("submit was called")
+    console.log("submit was called");
     ref.authWithPassword({
       email: $scope.credentials.username,
       password: $scope.credentials.password
@@ -20,11 +20,11 @@ app.controller('loginController', ['$scope','$cookies', '$http', function($scope
       // }
       // $scope.login.$setPristine();
       if (error) {
-        console.log("Error", error)
+        console.log("Error", error);
       } else {
-        console.log("Success", authData)
-        $cookies.id = authData.uid
+        console.log("Success", authData);
+        $cookies.id = authData.uid;
       }
-    })
-  }
+    });
+  };
 }]);

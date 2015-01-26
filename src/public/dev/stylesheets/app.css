@@ -1,6 +1,6 @@
 html {
   /*background-color: #bbeeff;*/
-  background-image: url("/img/clouds_background.jpg");
+  background-image: url("/dist/img/clouds_background.jpg");
 
   background-attachment: fixed;
   background-position: 60% 60%;
