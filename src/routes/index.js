@@ -19,6 +19,11 @@ router.get('/video/test', function(req, res, next) {
   res.render('video');
 })
 
+router.get('/patients/:pid/doctors', function(req, res, next) {
+  console.log(req.params.pid);
+  console.log(req.params.pid);
+});
+
 /* GET persisted message history */
 router.get('/api/messages', function(req, res, next) {
   // Hard coded find for conversation - change when authentication is implemented
