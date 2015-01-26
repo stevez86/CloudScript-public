@@ -9,3 +9,5 @@ node_modules/
 !.elasticbeanstalk/*.global.yml
 src/package.json
 src/npm-debug.log
+gulpfile.js
+src/gulpfile.js
