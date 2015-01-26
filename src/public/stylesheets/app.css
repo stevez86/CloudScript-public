@@ -2,6 +2,10 @@
   width: 10%;
 }
 
+.t-a-center {
+  text-align: center;
+}
+
 .full-length {
   display: inline-block;
 }

@@ -22,7 +22,7 @@ router.get('/video/test', function(req, res, next) {
 /* GET persisted message history */
 router.get('/api/messages', function(req, res, next) {
   // Hard coded find for conversation - change when authentication is implemented
-  Conversation.findOne("54c56f10e4b06ac679179453", function(err, results) {
+  Conversation.findOne("54c2e4a1b976b78fbceb112d", function(err, results) {
     res.json(results.messages);
   })
 });
