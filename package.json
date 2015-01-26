@@ -24,11 +24,12 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
+    "gulp": "^3.8.10",
     "mocha": "^2.1.0",
-    "supertest": "^0.15.0",
-    "supervisor": "^0.6.0",
-    "setup-nocks": "~0.1.1",
     "nock": "*",
-    "protractor": "~1.6.1"
+    "protractor": "~1.6.1",
+    "setup-nocks": "~0.1.1",
+    "supertest": "^0.15.0",
+    "supervisor": "^0.6.0"
   }
 }
