@@ -107,7 +107,7 @@
 
     this.orderScript = function() {
       console.log("Script ordered!")
-      // PLACE ORDER WITH POSTMATES
+      // PLACE ORDER WITH POSTMATES TODO
     }
 
   }])
@@ -137,7 +137,7 @@
     };
   });
 
-  app.directive('dprxs', function(){
+  app.directive('dprxns', function(){
     return {
       restrict: 'E',
       templateUrl: '../partials/doctor/p_rxs.html',
