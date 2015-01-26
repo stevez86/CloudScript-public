@@ -22,7 +22,7 @@ app.controller('RxController', ['$scope', '$http', '$firebase', 'newScript', fun
     newScript.updateUserPrescriptions(rx);
     newScript.newOrder(rx);
 
-    $scope.new_rx_response = "RX submitted!"
+    $scope.new_rx_response = "RX submitted!";
   };
 
   $scope.reset();
