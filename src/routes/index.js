@@ -29,7 +29,9 @@ router.get('/api/messages', function(req, res, next) {
 
 /* POST message to be persisted in MongoDB */
 router.post('/api/messages', function(req, res, next) {
+
   // Hard coded find for conversation - change when authentication is implemented
+
   Conversation.findOne("54c56f10e4b06ac679179453").exec(function(err, conversation) {
     Message.create(req.body)
     .then(function(message) {
