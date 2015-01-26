@@ -1,1 +1,0 @@
-exports.googleApi="AIzaSyBAXUBvubtIPTOfPLKeA_FctoMHWtAX62k"

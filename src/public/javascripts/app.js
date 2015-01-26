@@ -123,17 +123,108 @@
     };
   });
 
-  app.directive('rx', function(){
+  app.directive('newrxform', function(){
     return {
       restrict: 'E',
-      templateUrl: '../partials/new_rx_form.html',
+      templateUrl: '../partials/doctor/new_rx_form.html',
     };
   });
 
-    app.directive('newscript', function(){
+  app.directive('newrxpop', function(){
     return {
       restrict: 'E',
-      templateUrl: '../partials/newscript.html',
+      templateUrl: '../partials/patient/new_rx_popup.html',
+    };
+  });
+
+  app.directive('dprxs', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/doctor/p_rxs.html',
+    };
+  });
+
+  app.directive('prxns', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/patient/p_rxs.html',
+    };
+  });
+
+  app.directive('pmenu', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/patient/menu.html',
+    };
+  });
+
+  app.directive('dmenu', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/doctor/menu.html',
+    };
+  });
+
+  app.directive('patients', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/doctor/patients.html',
+    };
+  });
+
+  app.directive('patient', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/doctor/patient.html',
+    };
+  });
+
+  app.directive('doctors', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/patient/doctors.html',
+    };
+  });
+
+  app.directive('doctor', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/patient/doctor.html',
+    };
+  });
+
+  app.directive('prxs', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/patient/p_rxs.html',
+    };
+  });
+
+  app.directive('neworder', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/patient/new_order.html',
+    };
+  });
+
+  app.directive('missedmessages', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/missed_messages.html',
+    };
+  });
+
+  app.directive('pprofile', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/patient/profile.html',
+    };
+  });
+
+  app.directive('dprofile', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '../partials/doctor/profile.html',
     };
   });
 
@@ -147,26 +238,48 @@
 
   app.config(function($routeProvider) {
     $routeProvider
-
     // route for the home page
     .when('/', {
-        templateUrl : 'partials/homepage.html',
+        templateUrl : 'views/homepage.html',
         controller  : 'HomepageController'
     })
 
-    // route for the about page
     .when('/login', {
-        templateUrl : 'partials/login.html',
+        templateUrl : 'views/login.html',
         controller  : 'LoginController'
     })
 
     .when('/signup', {
-        templateUrl : 'partials/signup.html',
+        templateUrl : 'views/signup.html',
         controller  : 'SignupController'
     })
 
-    .when('/index', {
-        templateUrl : 'partials/loggedin.html'
+    .when('/d', {
+        templateUrl : 'views/doctor/home.html'
+    })
+
+    .when('/d/patients', {
+        templateUrl : 'views/doctor/patient.html'
+    })
+
+    .when('/d/profile', {
+        templateUrl : 'views/doctor/profile.html'
+    })
+
+    .when('/p', {
+        templateUrl : 'views/patient/home.html'
+    })
+
+    .when('/p/orders/new', {
+        templateUrl : 'views/patient/new_order.html'
+    })
+
+    .when('/p/doctors', {
+        templateUrl : 'views/patient/doctor.html'
+    })
+
+    .when('/p/profile', {
+        templateUrl : 'views/patient/profile.html'
     })
   });
 
