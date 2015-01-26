@@ -15,6 +15,10 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/video/test', function(req, res, next) {
+  res.render('video');
+})
+
 /* GET persisted message history */
 router.get('/api/messages', function(req, res, next) {
   // Hard coded find for conversation - change when authentication is implemented
