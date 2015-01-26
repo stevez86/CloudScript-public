@@ -124,11 +124,11 @@
         email: $scope.credentials.username,
         password: $scope.credentials.password
       }, function(error, authData) {
-        $scope.credentials = {
-          username: '',
-          password: ''
-        }
-        $scope.login.$setPristine();
+        // $scope.credentials = {
+        //   username: '',
+        //   password: ''
+        // }
+        // $scope.login.$setPristine();
         if (error) {
           console.log("Error", error)
         } else {
