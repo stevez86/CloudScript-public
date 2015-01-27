@@ -5,11 +5,6 @@ var mongoose = require('mongoose');
 var request = require('request');
 var Q = require('q');
 
-var Conversation = require('../models/Conversation');
-var Message = require('../models/Message');
-var User = require('../models/User')
-var Prescription = require('../models/Prescription');
-
 router.get('/', require('./homepage'));
 
 router.get('/video/test', require('./video_test'));
