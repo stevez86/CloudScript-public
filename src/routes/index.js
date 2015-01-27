@@ -16,6 +16,8 @@ router.get('/video/test', require('./video_test'))
 
 router.get('/api/messages', require('./get_messages'));
 
+router.get('/api/login', require('./validate_login'))
+
 router.post('/api/messages', require('./post_message'));
 
 router.post('/orders', require('./post_orders'));

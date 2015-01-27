@@ -1,4 +1,4 @@
-app.controller('loginController', ['$scope','$cookies', '$http', function($scope,$cookies, $http){
+app.controller('loginController', ['$scope','$cookies', '$http', 'loginHelper', function($scope,$cookies, $http, loginHelper){
   var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
   $scope.credentials = {
@@ -24,6 +24,9 @@ app.controller('loginController', ['$scope','$cookies', '$http', function($scope
       } else {
         console.log("Success", authData)
         $cookies.id = authData.uid
+        $http.get('/api/login?id='+$cookies.id)
+          .success()
+        // loginHelper.logIn($cookies.id);
       }
     })
   }

@@ -1,6 +1,5 @@
-app.service('loginHelper', ['$http', function($http) {
-  var self = this;
-  this.loggedInAs = function(id) {
+module.exports = function(req, res, next) {
+  var loggedInAs = function(id) {
     if (!id || User.count({'firebase_id': id}) === 0) {
       return false
     } else if (User.count({'firebase_id': id}) !== 1) {
@@ -15,4 +14,7 @@ app.service('loginHelper', ['$http', function($http) {
       }
     }
   }
-}]);
+
+  var response = loggedInAs(req.query.id)
+  res.json({value: response})
+};
