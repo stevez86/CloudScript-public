@@ -9,7 +9,9 @@ var userSchema = new Schema({
   email:          String,
   doctor:         Boolean,
   patient:        Boolean,
-  prescriptions:  Array
+  prescriptions:  Array,
+  doctors:        Array,
+  patients:       Array
 });
 
 module.exports = mongoose.model('User', userSchema);
