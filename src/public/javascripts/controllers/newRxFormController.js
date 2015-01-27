@@ -1,4 +1,4 @@
-app.controller('RxController', ['$scope', '$http', '$firebase', 'newScript', function($scope, $http, $firebase, newScript){
+app.controller('newRxFormController', ['$scope', '$http', '$firebase', 'newScript', function($scope, $http, $firebase, newScript){
 
   $scope.master = {};
 

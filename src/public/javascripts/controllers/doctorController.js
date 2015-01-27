@@ -1,11 +1,33 @@
-app.controller('DoctorController', ['$scope', '$http', 'doctor', function($scope, $http, doctor) {
+app.controller('DoctorController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
-  var doctorID = 17; //set this to current doctor id $scope.current_user.id
+  var doctorID = $routeParams.doctorid; //set this to current doctor id $scope.current_user.id
 
-  //make this into factory
+  //doctors info
   $http.get('/api/doctors/'+ doctorID)
     .success(function(data, status, headers, config) {
-      // console.log(data);
       $scope.doctor = data;
   })
+
+  //doctors patients
+  $http.get('/api/doctors/'+ doctorID + '/patients')
+    .success(function(data, status, headers, config) {
+      $scope.patients = data;
+  })
+
+  //doctor rxs
+  $http.get('/api/doctors/'+ doctorID +'/rxs')
+    .success(function(data, status, headers, config) {
+      $scope.rxs = data;
+  })
+
+  var patientID = $routeParams.patientid;
+
+  if (patientID) {
+    console.log("patient in route")
+
+    $http.get('/api/doctors/'+ doctorID + '/patients/' + patientID)
+      .success(function(data, status, headers, config) {
+        $scope.patient = data;
+    })
+  }
 }]);

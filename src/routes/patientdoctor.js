@@ -2,10 +2,9 @@ module.exports = function(req, res, next) {
 
   var doctorID = req.params.doctorid
 
-  //get doctor from database
+  //get patients from database
 
   res.json(
-    { name: "Doctor 1", id: doctorID}
+    { name: "Doctor " + doctorID , id: doctorID}
   );
-
 };
