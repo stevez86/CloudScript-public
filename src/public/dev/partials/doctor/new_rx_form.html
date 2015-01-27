@@ -1,8 +1,7 @@
-<h2>New Prescription</h2>
 <div id="newrxform">
   <ng-form novalidate class="simple-form">
     <label><span class="formtext">Drug Name: </span><input type="text" ng-model="rx.name" /></label>
     <label><span class="formtext">Quantity: </span><input type="text" ng-model="rx.qty" /></label>
-    <input class="formbutton" type="submit" ng-click="submit(rx)" value="Submit Prescription" />
+    <button class="pure-button" ng-click="DoctorCtrl.submitNewRx(rx)">Submit Prescription</button>
   </ng-form>
 </div>

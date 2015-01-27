@@ -41,24 +41,24 @@ gulp.task('htmlpage', function() {
 gulp.task('scripts', function() {
   gulp.src(['./src/public/dev/javascripts/services/*.js', './src/public/dev/javascripts/routes/*.js', './src/public/dev/javascripts/factories/*.js', './src/public/dev/javascripts/directives/*.js', './src/public/dev/javascripts/controllers/*.js'])
     .pipe(concat('script.js'))
-    .pipe(stripDebug())
-    .pipe(uglify())
+    // .pipe(stripDebug())
+    // .pipe(uglify())
     .pipe(gulp.dest('./src/public/javascripts/'));
 });
 
 gulp.task('vendorScripts', function() {
   gulp.src('./src/public/dev/javascripts/vendor/*.js')
     .pipe(concat('vendor.js'))
-    .pipe(stripDebug())
-    .pipe(uglify())
+    // .pipe(stripDebug())
+    // .pipe(uglify())
     .pipe(gulp.dest('./src/public/javascripts/'));
 });
 
 gulp.task('appScript', function() {
   gulp.src('./src/public/dev/javascripts/app.js')
     .pipe(concat('app.js'))
-    .pipe(stripDebug())
-    .pipe(uglify())
+    // .pipe(stripDebug())
+    // .pipe(uglify())
     .pipe(gulp.dest('./src/public/javascripts/'));
 });
 
@@ -70,7 +70,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('./src/public/stylesheets/'));
 });
 
-gulp.task('default', ['imagemin', 'htmlpage', 'scripts', 'vendorScripts', 'appScript', 'styles'], function() {});
+gulp.task('default', ['imagemin', 'htmlpage', 'scripts', 'vendorScripts', 'appScript', 'styles']);
 
 gulp.task('watch', function() {
   // watch for HTML changes
