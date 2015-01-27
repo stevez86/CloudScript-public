@@ -2,6 +2,7 @@ app.config(function($routeProvider) {
     $routeProvider
 
     .when('/', {
+        templateUrl : 'dev/views/homepage.html'
         // templateUrl : 'views/homepage.html'
         // templateUrl : '/views/homepage.html'
         // templateUrl : './views/homepage.html'
