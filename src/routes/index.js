@@ -44,6 +44,6 @@ router.post('/api/users', require('./create_user'));
 
 router.post('/api/messages', require('./post_message'));
 
-router.post('/orders', require('./post_orders'));
+router.post('/api/orders', require('./post_orders'));
 
 module.exports = router;
