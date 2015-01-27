@@ -5,7 +5,7 @@ app.factory("doctor", ["$http", function($http) {
       $http.get('/api/doctors/'+ doctorID + '/patients')
         .success(function(data, status, headers, config) {
           return data;
-      })
+      });
     }
   };
 

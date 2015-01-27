@@ -6,19 +6,19 @@ app.controller('DoctorController', ['$scope', '$http', '$routeParams', function(
   $http.get('/api/doctors/'+ doctorID)
     .success(function(data, status, headers, config) {
       $scope.doctor = data;
-  })
+  });
 
-  //doctors patients
-  $http.get('/api/doctors/'+ doctorID + '/patients')
-    .success(function(data, status, headers, config) {
-      $scope.patients = data;
-  })
+  // //doctors patients
+  // $http.get('/api/doctors/'+ doctorID + '/patients')
+  //   .success(function(data, status, headers, config) {
+  //     $scope.patients = data;
+  // });
 
-  //doctor rxs
-  $http.get('/api/doctors/'+ doctorID +'/rxs')
-    .success(function(data, status, headers, config) {
-      $scope.rxs = data;
-  })
+  // //doctor rxs
+  // $http.get('/api/doctors/'+ doctorID +'/rxs')
+  //   .success(function(data, status, headers, config) {
+  //     $scope.rxs = data;
+  // });
 
   var patientID = $routeParams.patientid;
 
@@ -27,6 +27,6 @@ app.controller('DoctorController', ['$scope', '$http', '$routeParams', function(
     $http.get('/api/doctors/'+ doctorID + '/patients/' + patientID)
       .success(function(data, status, headers, config) {
         $scope.patient = data;
-    })
+    });
   }
 }]);
