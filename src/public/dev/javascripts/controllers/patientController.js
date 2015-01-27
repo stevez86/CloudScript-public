@@ -6,6 +6,7 @@ app.controller('PatientController', ['$scope', '$http', '$routeParams', function
   $http.get('/api/patients/'+ patientID)
     .success(function(data, status, headers, config) {
       console.log(data);
+      $scope.patientId = patientID
       $scope.patient = data;
   })
 

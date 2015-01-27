@@ -16,7 +16,7 @@ router.get('/video/test', require('./video_test'));
 
 //API - PATIENTS
 
-router.get('/api/patients/:patientid', require('./patient/patientinfo'));
+router.get('/api/p/:patientid', require('./patient/patientinfo'));
 
 // router.get('/api/patients/:patientid/doctors', require('./patient/patientdoctors'));
 
@@ -26,7 +26,7 @@ router.get('/api/patients/:patientid', require('./patient/patientinfo'));
 
 //API - DOCTORS
 
-router.get('/api/doctors/:doctorid', require('./doctor/doctor'));
+router.get('/api/d/:doctorid', require('./doctor/doctor'));
 
 // router.get('/api/doctors/:doctorid/patients', require('./doctor/doctorpatients'));
 
