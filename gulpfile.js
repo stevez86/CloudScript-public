@@ -84,7 +84,7 @@ gulp.task('watch', function() {
   });
 
   // watch for CSS changes
-  gulp.watch('./src/public/stylesheets/*.css', function() {
+  gulp.watch('./src/public/dev/stylesheets/*.css', function() {
     gulp.run('styles');
   });
 });
