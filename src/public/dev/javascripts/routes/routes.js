@@ -1,9 +1,8 @@
-app.config(function($routeProvider) {
+app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
 
     .when('/', {
-        templateUrl : 'views/homepage.html',
-        controller  : 'HomepageController'
+        templateUrl : 'views/homepage.html'
     })
 
     .when('/login', {
@@ -42,5 +41,5 @@ app.config(function($routeProvider) {
 
     .when('/p/profile', {
         templateUrl : 'views/patient/profile.html'
-    })
-});
+    });
+}]);
