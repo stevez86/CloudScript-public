@@ -1,19 +1,12 @@
-app.config(function($routeProvider) {
+app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
 
     .when('/', {
-        templateUrl : 'dev/views/homepage.html'
-        // templateUrl : 'views/homepage.html'
-        // templateUrl : '/views/homepage.html'
-        // templateUrl : './views/homepage.html'
-        // templateUrl : 'dist/views/homepage.html'
-        // templateUrl : '/dist/views/homepage.html'
-        // templateUrl : './dist/views/homepage.html'
-        // templateUrl : '../public/dist/views/homepage.html'
+        templateUrl : 'views/homepage.html'
     })
 
     .when('/login', {
-        templateUrl : 'dist/views/login.html',
+        templateUrl : 'views/login.html',
         controller  : 'LoginController'
     })
 
@@ -49,4 +42,4 @@ app.config(function($routeProvider) {
     .when('/p/profile', {
         templateUrl : 'views/patient/profile.html'
     });
-});
+}]);
