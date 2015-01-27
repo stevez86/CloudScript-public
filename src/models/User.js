@@ -8,7 +8,10 @@ var userSchema = new Schema({
   avatar_url:     String,
   doctor:         Boolean,
   patient:        Boolean,
-  prescriptions:  Array
+  prescriptions:  Array,
+  doctors:        Array,
+  patients:       Array
 });
+
 
 module.exports = mongoose.model('user', userSchema);

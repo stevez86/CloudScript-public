@@ -20,11 +20,11 @@ app.config(function($routeProvider) {
         templateUrl : 'views/doctor/home.html'
     })
 
-    .when('/d/patients', {
+    .when('/d/patients/:id', {
         templateUrl : 'views/doctor/patient.html'
     })
 
-    .when('/d/profile', {
+    .when('/d/doctors/:id/profile', {
         templateUrl : 'views/doctor/profile.html'
     })
 
@@ -36,11 +36,11 @@ app.config(function($routeProvider) {
         templateUrl : 'views/patient/new_order.html'
     })
 
-    .when('/p/doctors', {
+    .when('/p/doctors/:id', {
         templateUrl : 'views/patient/doctor.html'
     })
 
-    .when('/p/profile', {
+    .when('/p/patients/:id/profile', {
         templateUrl : 'views/patient/profile.html'
     })
 });

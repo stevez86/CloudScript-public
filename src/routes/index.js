@@ -12,9 +12,11 @@ var Prescription = require('../models/Prescription');
 
 router.get('/', require('./homepage'));
 
-router.get('/video/test', require('./video_test'))
+router.get('/video/test', require('./video_test'));
 
-router.get('/patients/:pid/doctors', require('./patientdoctors'));
+router.get('/api/patients/:id/doctors', require('./patientdoctors'));
+
+router.get('/api/doctors/:id', require('./doctor'));
 
 router.get('/api/messages', require('./get_messages'));
 
