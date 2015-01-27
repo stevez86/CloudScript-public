@@ -15,31 +15,31 @@ app.config(['$routeProvider', function($routeProvider) {
         controller  : 'SignupController'
     })
 
-    .when('/d', {
+    .when('/d/:doctorid/', {
         templateUrl : 'views/doctor/home.html'
     })
 
-    .when('/d/patients', {
+    .when('/d/:doctorid/patients/:patientid', {
         templateUrl : 'views/doctor/patient.html'
     })
 
-    .when('/d/profile', {
+    .when('/d/:doctorid/profile', {
         templateUrl : 'views/doctor/profile.html'
     })
 
-    .when('/p', {
+    .when('/p/:patientid/', {
         templateUrl : 'views/patient/home.html'
     })
 
-    .when('/p/orders/new', {
+    .when('/p/:patientid/orders/new', {
         templateUrl : 'views/patient/new_order.html'
     })
 
-    .when('/p/doctors', {
+    .when('/p/:patientid/doctors/:doctorid', {
         templateUrl : 'views/patient/doctor.html'
     })
 
-    .when('/p/profile', {
+    .when('/p/:patientid/profile', {
         templateUrl : 'views/patient/profile.html'
     });
 }]);

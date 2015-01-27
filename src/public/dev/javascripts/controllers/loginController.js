@@ -1,4 +1,4 @@
-app.controller('loginController', ['$scope','$cookies', '$http', function($scope,$cookies, $http){
+app.controller('loginController', ['$scope','$cookies', '$http', function($scope, $cookies, $http){
   var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
   $scope.credentials = {

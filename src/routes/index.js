@@ -12,16 +12,34 @@ var Prescription = require('../models/Prescription');
 
 router.get('/', require('./homepage'));
 
-router.get('/video/test', require('./video_test'))
+router.get('/video/test', require('./video_test'));
+
+//API - PATIENTS
+
+router.get('/api/patients/:patientid', require('./patient/patientinfo'));
+
+router.get('/api/patients/:patientid/doctors', require('./patient/patientdoctors'));
+
+router.get('/api/patients/:patientid/rxs', require('./patient/patientrxs'));
+
+router.get('/api/patients/:patientid/doctors/:doctorid', require('./patient/patientdoctor'));
+
+//API - DOCTORS
+
+router.get('/api/doctors/:doctorid', require('./doctor/doctor'));
+
+router.get('/api/doctors/:doctorid/patients', require('./doctor/doctorpatients'));
+
+router.get('/api/doctors/:doctorid/patients/:patientid', require('./doctor/doctorpatient'));
+
+router.get('/api/doctors/:doctorid/rxs', require('./doctor/doctorrxs'));
+
+// OTHER
 
 router.get('/api/messages', require('./get_messages'));
 
 router.post('/api/messages', require('./post_message'));
 
 router.post('/orders', require('./post_orders'));
-
-// router.param('doctor', require('./doctor_param'));
-
-// router.param('patient', require('./patient_param'));
 
 module.exports = router;

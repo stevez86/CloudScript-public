@@ -1,1 +1,6 @@
-<h2>A Patient's current prescriptions</h2>
+<h2>Patient's RXs</h2>
+<div id="patientrxs">
+  <div ng-repeat="rx in rxs">
+    <a class="pure-button" href="#">{{rx.name}} refills: {{rx.refills}}</a>
+  </div>
+</div>
