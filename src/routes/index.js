@@ -41,4 +41,6 @@ router.post('/api/messages', require('./post_message'));
 
 router.post('/api/orders', require('./post_orders'));
 
+router.post('/api/patients/prescription', require('./new_prescription'));
+
 module.exports = router;

@@ -3,6 +3,7 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
   var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
   var sync = $firebase(ref);
   this.script = sync.$asObject();
+  self.script.prescriptions = false;
 
   this.updateUserPrescriptions = function(manifest) {
     // $http.post("LINK TO MONGODB", {INFO ABOUT SCRIPT & USER})
@@ -232,12 +233,12 @@ app.directive('dprofile', function(){
   };
 });
 
-// app.directive('newscript', function(){
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../partials/newscript.html',
-//   };
-// });
+app.directive('newscript', function(){
+  return {
+    restrict: 'E',
+    templateUrl: '../partials/patient/new_rx_popup.html',
+  };
+});
 app.controller('RxController', ['$scope', '$http', '$firebase', 'newScript', function($scope, $http, $firebase, newScript){
 
   $scope.master = {};
@@ -325,13 +326,16 @@ app.controller('DoctorController', ['$scope', '$http', '$routeParams', 'newScrip
     newRX.patientID = patientID;
     newRX.doctorID = doctorID;
 
-    newScript.newOrder(newRX);
-
-    console.log(newRX);
-    console.log("RX SENT");
+    $http.post("/api/patients/prescription", newRX)
+      .success(function(data, headers) {
+        newScript.script.prescriptions = true;
+        newScript.script.$save();
+        console.log(newScript);
+        $scope.showNewRxForm = !newScript.script.prescriptions;
+      });
 
     $scope.sysMessages = "New Prescription Sent";
-    $scope.showNewRxForm = false;
+    $scope.showNewRxForm = !newScript.script.prescriptions;
     // newScript.script.prescriptions;
 
 
@@ -414,14 +418,16 @@ app.controller('newRxFormController', ['$scope', '$http', '$firebase', 'newScrip
 app.controller('newScriptController', ['$scope', '$http', 'newScript', function($scope, $http, newScript) {
   $scope.newScript = newScript;
 }]);
-app.controller('PatientController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('PatientController', ['$scope', '$http', '$routeParams', 'newScript', function($scope, $http, $routeParams, newScript) {
+
+  $scope.newScript = newScript
+  console.log($scope.newScript.script.prescriptions);
 
   var patientID = $routeParams.patientid; //set this to current patient id $scope.current_user.id
 
   //patients info
   $http.get('/api/patients/'+ patientID)
     .success(function(data, status, headers, config) {
-      console.log(data);
       $scope.patient = data;
   });
 
@@ -439,13 +445,13 @@ app.controller('PatientController', ['$scope', '$http', '$routeParams', function
 
   var doctorID = $routeParams.doctorid;
 
-  if (doctorID) {
+  // if (doctorID) {
 
-    $http.get('/api/patients/'+ patientID + '/doctors/' + doctorID)
-      .success(function(data, status, headers, config) {
-        $scope.doctor = data;
-    });
-  }
+  //   $http.get('/api/patients/'+ patientID + '/doctors/' + doctorID)
+  //     .success(function(data, status, headers, config) {
+  //       $scope.doctor = data;
+  //   });
+  // }
 }]);
 app.controller('registerController', ['$scope', '$location', '$http', '$cookies', function($scope, $cookies, $location, $http) {
   var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");

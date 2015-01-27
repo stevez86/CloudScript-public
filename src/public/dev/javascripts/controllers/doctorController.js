@@ -28,13 +28,16 @@ app.controller('DoctorController', ['$scope', '$http', '$routeParams', 'newScrip
     newRX.patientID = patientID;
     newRX.doctorID = doctorID;
 
-    newScript.newOrder(newRX);
-
-    console.log(newRX);
-    console.log("RX SENT");
+    $http.post("/api/patients/prescription", newRX)
+      .success(function(data, headers) {
+        newScript.script.prescriptions = true;
+        newScript.script.$save();
+        console.log(newScript);
+        $scope.showNewRxForm = !newScript.script.prescriptions;
+      });
 
     $scope.sysMessages = "New Prescription Sent";
-    $scope.showNewRxForm = false;
+    $scope.showNewRxForm = !newScript.script.prescriptions;
     // newScript.script.prescriptions;
 
 

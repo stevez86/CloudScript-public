@@ -1,11 +1,13 @@
-app.controller('PatientController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('PatientController', ['$scope', '$http', '$routeParams', 'newScript', function($scope, $http, $routeParams, newScript) {
+
+  $scope.newScript = newScript
+  console.log($scope.newScript.script.prescriptions);
 
   var patientID = $routeParams.patientid; //set this to current patient id $scope.current_user.id
 
   //patients info
   $http.get('/api/patients/'+ patientID)
     .success(function(data, status, headers, config) {
-      console.log(data);
       $scope.patient = data;
   });
 
@@ -23,11 +25,11 @@ app.controller('PatientController', ['$scope', '$http', '$routeParams', function
 
   var doctorID = $routeParams.doctorid;
 
-  if (doctorID) {
+  // if (doctorID) {
 
-    $http.get('/api/patients/'+ patientID + '/doctors/' + doctorID)
-      .success(function(data, status, headers, config) {
-        $scope.doctor = data;
-    });
-  }
+  //   $http.get('/api/patients/'+ patientID + '/doctors/' + doctorID)
+  //     .success(function(data, status, headers, config) {
+  //       $scope.doctor = data;
+  //   });
+  // }
 }]);

@@ -110,9 +110,9 @@ app.directive('dprofile', function(){
   };
 });
 
-// app.directive('newscript', function(){
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../partials/newscript.html',
-//   };
-// });
+app.directive('newscript', function(){
+  return {
+    restrict: 'E',
+    templateUrl: '../partials/patient/new_rx_popup.html',
+  };
+});

@@ -3,6 +3,7 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
   var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
   var sync = $firebase(ref);
   this.script = sync.$asObject();
+  self.script.prescriptions = false;
 
   this.updateUserPrescriptions = function(manifest) {
     // $http.post("LINK TO MONGODB", {INFO ABOUT SCRIPT & USER})
