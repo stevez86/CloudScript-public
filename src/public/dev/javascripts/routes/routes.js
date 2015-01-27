@@ -7,12 +7,12 @@ app.config(['$routeProvider', function($routeProvider) {
 
     .when('/login', {
         templateUrl : 'views/login.html',
-        controller  : 'LoginController'
+        controller  : 'loginController'
     })
 
     .when('/signup', {
         templateUrl : 'views/signup.html',
-        controller  : 'SignupController'
+        controller  : 'registerController'
     })
 
     .when('/d/:doctorid/', {
@@ -41,5 +41,6 @@ app.config(['$routeProvider', function($routeProvider) {
 
     .when('/p/:patientid/profile', {
         templateUrl : 'views/patient/profile.html'
+
     });
 }]);
