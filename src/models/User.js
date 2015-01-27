@@ -5,11 +5,11 @@ var userSchema = new Schema({
   address:        String,
   name:           String,
   firebase_id:    String,
-  home_address:   String,
   avatar_url:     String,
+  email:          String,
   doctor:         Boolean,
   patient:        Boolean,
   prescriptions:  Array
 });
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('User', userSchema);

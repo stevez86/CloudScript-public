@@ -1,20 +1,8 @@
+var User = require('../models/User');
 module.exports = function(req, res, next) {
-  var loggedInAs = function(id) {
-    if (!id || User.count({'firebase_id': id}) === 0) {
-      return false
-    } else if (User.count({'firebase_id': id}) !== 1) {
-      return "error"
-    } else {
-      if (User.findOne({'firedbase_id': id}).doctor && User.findOne({'firedbase_id': id}).patient){
-        return "error"
-      } else if(User.findOne({'firedbase_id': id}).doctor){
-        return "doctor"
-      } else if (User.findOne({'firedbase_id': id}).patient) {
-        return "patient"
-      }
-    }
-  }
-
-  var response = loggedInAs(req.query.id)
-  res.json({value: response})
+    User.findOne({firebase_id: req.query.id}).exec(function(err, user){
+      if (user.patient) {res.json({userType: "patient", userId: user._id})}
+      else if (user.doctor) {res.json({userType: "doctor", userId: user._id})}
+      else {res.json({userType: "error"})}
+    });
 };
