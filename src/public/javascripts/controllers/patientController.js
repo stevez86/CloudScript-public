@@ -24,7 +24,6 @@ app.controller('PatientController', ['$scope', '$http', '$routeParams', function
   var doctorID = $routeParams.doctorid;
 
   if (doctorID) {
-    console.log("doctor in route")
 
     $http.get('/api/patients/'+ patientID + '/doctors/' + doctorID)
       .success(function(data, status, headers, config) {

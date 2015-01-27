@@ -1,6 +1,6 @@
 <h2>Your Patients for doctor: {{doctor.name}}, id: {{doctor.id}}</h2>
 <div id="patientslist">
   <div ng-repeat="patient in patients">
-    <a class="pure-button" href="#/d/{{doctor.id}}/patients/">{{patient.name}} id: {{patient.id}}</a>
+    <a class="pure-button" href="#/d/{{doctor.id}}/patients/{{patient.id}}">{{patient.name}} id: {{patient.id}}</a>
   </div>
 </div>

@@ -16,23 +16,23 @@ router.get('/video/test', require('./video_test'));
 
 //API - PATIENTS
 
-router.get('/api/patients/:patientid', require('./patientinfo'));
+router.get('/api/patients/:patientid', require('./patient/patientinfo'));
 
-router.get('/api/patients/:patientid/doctors', require('./patientdoctors'));
+router.get('/api/patients/:patientid/doctors', require('./patient/patientdoctors'));
 
-router.get('/api/patients/:patientid/rxs', require('./patientrxs'));
+router.get('/api/patients/:patientid/rxs', require('./patient/patientrxs'));
 
-router.get('/api/patients/:patientid/doctors/:doctorid', require('./patientdoctor'));
+router.get('/api/patients/:patientid/doctors/:doctorid', require('./patient/patientdoctor'));
 
 //API - DOCTORS
 
-router.get('/api/doctors/:doctorid', require('./doctor'));
+router.get('/api/doctors/:doctorid', require('./doctor/doctor'));
 
-router.get('/api/doctors/:doctorid/patients', require('./doctorpatients'));
+router.get('/api/doctors/:doctorid/patients', require('./doctor/doctorpatients'));
 
-router.get('/api/doctors/:doctorid/patients/:patientid', require('./doctorpatient'));
+router.get('/api/doctors/:doctorid/patients/:patientid', require('./doctor/doctorpatient'));
 
-router.get('/api/doctors/:doctorid/rxs', require('./doctorrxs'));
+router.get('/api/doctors/:doctorid/rxs', require('./doctor/doctorrxs'));
 
 // OTHER
 
