@@ -1,11 +1,10 @@
+var User = require('../../models/User.js')
+
 module.exports = function(req, res, next) {
 
-  var doctorID = req.params.doctorid
-
-  //get doctor from database
-
-  res.json(
-    { name: "Doctor 1", id: doctorID}
-  );
+  User.findOne({_id: req.params.doctorid}, function(err, user) {
+    console.log(user);
+    res.json(user);
+  });
 
 };

@@ -7,21 +7,21 @@ app.controller('loginController', ['$location', '$scope', '$cookies', '$http', f
       email: $scope.credentials.username,
       password: $scope.credentials.password
     }, function(error, authData) {
-      if (error) { console.log("Error", error) }
+      if (error) { console.log("Error", error); }
       else {
-        $cookies.id = authData.uid
+        $cookies.id = authData.uid;
         $http({ method: "GET",
                 url: "/api/login",
                 params: {id: $cookies.id}
               })
         .success(function(data) {
           if (data.userType === "doctor") {
-            $location.path('/d/' + data.userId)
+            $location.path('/d/' + data.userId);
           } else if (data.userType === "patient") {
-            $location.path('/p/' + data.userId)
-          } else { console.log("Error!") };
+            $location.path('/p/' + data.userId);
+          } else { console.log("Error!"); }
         });
       }
-    })
-  }
+    });
+  };
 }]);
