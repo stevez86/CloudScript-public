@@ -1,4 +1,4 @@
-app.controller('DoctorController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('DoctorController', ['$scope', '$http', '$routeParams', 'newScript', function($scope, $http, $routeParams, newScript) {
 
   var doctorID = $routeParams.doctorid; //set this to current doctor id $scope.current_user.id
 
@@ -20,9 +20,8 @@ app.controller('DoctorController', ['$scope', '$http', '$routeParams', function(
   //     $scope.rxs = data;
   // });
 
-  var patientID = $routeParams.patientid;
 
-  if (patientID) {
+  // if (patientID) {
 
     $http.get('/api/doctors/'+ doctorID + '/patients/' + patientID)
       .success(function(data, status, headers, config) {

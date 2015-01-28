@@ -10,11 +10,11 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
 
   this.newOrder = function(rx) {
 
-      $http.post('/orders', rx)
+      $http.post('api/orders', rx)
       .success(function(data, status, headers, config) {
         self.orderData = data;
 
-        self.script.prescriptions = true;
+        self.script.rxPopup = true;
         self.script.$save().then(function(ref) {}, function(error) {});
         console.log(self.script);
         // var obj = $firebase(ref).$asObject();
