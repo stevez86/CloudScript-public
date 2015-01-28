@@ -16,9 +16,9 @@ app.controller('loginController', ['$location', '$scope', '$cookies', '$http', f
               })
         .success(function(data) {
           if (data.userType === "doctor") {
-            $location.path('/d/' + data.userId)
+            $location.path('/doctor/' + data.userId)
           } else if (data.userType === "patient") {
-            $location.path('/p/' + data.userId)
+            $location.path('/patient/' + data.userId)
           } else { console.log("Error!") };
         });
       }

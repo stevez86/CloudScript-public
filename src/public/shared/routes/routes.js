@@ -6,41 +6,41 @@ app.config(['$routeProvider', function($routeProvider) {
     })
 
     .when('/login', {
-        templateUrl : 'views/login.html',
+        templateUrl : 'shared/login.html',
         controller  : 'loginController'
     })
 
     .when('/signup', {
-        templateUrl : 'views/signup.html',
-        controller  : 'registerController'
+        templateUrl : 'shared/signup.html',
+        controller  : 'signupController'
     })
 
-    .when('/d/:doctorid/', {
-        templateUrl : 'views/doctor/home.html'
+    .when('/doctor/:doctorid/', {
+        templateUrl : 'components/doctor/index.html'
     })
 
-    .when('/d/:doctorid/patients/:patientid', {
-        templateUrl : 'views/doctor/patient.html'
+    .when('/doctor/:doctorid/patients/:patientid', {
+        templateUrl : 'components/doctor/view_patient.html'
     })
 
-    .when('/d/:doctorid/profile', {
-        templateUrl : 'views/doctor/profile.html'
+    .when('/doctor/:doctorid/profile', {
+        templateUrl : 'components/doctor/profile.html'
     })
 
-    .when('/p/:patientid/', {
-        templateUrl : 'views/patient/home.html'
+    .when('/patient/:patientid/', {
+        templateUrl : 'components/patient/index.html'
     })
 
-    .when('/p/:patientid/orders/new', {
-        templateUrl : 'views/patient/new_order.html'
+    .when('/patient/:patientid/orders/new', {
+        templateUrl : 'components/patient/new_order.html'
     })
 
-    .when('/p/:patientid/doctors/:doctorid', {
-        templateUrl : 'views/patient/doctor.html'
+    .when('/patient/:patientid/doctors/:doctorid', {
+        templateUrl : 'components/patient/view_doctor.html'
     })
 
-    .when('/p/:patientid/profile', {
-        templateUrl : 'views/patient/profile.html'
+    .when('/patient/:patientid/profile', {
+        templateUrl : 'components/patient/profile.html'
 
     });
 }]);
