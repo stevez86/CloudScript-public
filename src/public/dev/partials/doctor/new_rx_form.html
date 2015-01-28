@@ -1,7 +1,10 @@
 <div id="newrxform">
   <ng-form novalidate class="simple-form">
-    <label><span class="formtext">Drug Name: </span><input type="text" ng-model="rx.name" /></label>
+    <label><span class="formtext">Drug: </span><input type="text" ng-model="rx.name" list="drugnames"/></label>
     <label><span class="formtext">Quantity: </span><input type="text" ng-model="rx.qty" /></label>
     <button class="pure-button" ng-click="DoctorCtrl.submitNewRx(rx)">Submit Prescription</button>
   </ng-form>
+  <datalist id="drugnames">
+    <option ng-repeat="drugname in drugnames" value="{{drugname}}">
+  </datalist>
 </div>
