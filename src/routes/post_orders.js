@@ -27,13 +27,14 @@ module.exports = function(req, res, next) {
     dropoff_address: dropoff_address
   };
 
-  //BELOW COMMENTED OUT JUST FOR TESTING - DND
+  //Call to postmates api to get qupte for order
   // var postmates = new Postmates(process.env.POSTMATES_CUSTOMER_ID, process.env.POSTMATES_TEST_API_KEY);
 
   // postmates.quote(delivery, function(err, res) {
   //   console.log(res.body); // 799
   // });
 
+  //this is mocked data from postmates
   res.json({ kind: 'delivery_quote',
     fee: 1350,
     created: '2015-01-24T02:04:17Z',
