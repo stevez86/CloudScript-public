@@ -1,6 +1,7 @@
 app.controller('DoctorController', ['$scope', '$http', '$routeParams', 'newScript', function($scope, $http, $routeParams, newScript) {
 
   var doctorID = $routeParams.doctorid; //set this to current doctor id $scope.current_user.id
+  console.log($routeParams);
 
   //doctors info
   $http.get('/api/doctors/'+ doctorID)

@@ -1,14 +1,16 @@
 app.controller('PatientController', ['$scope', '$http', '$routeParams', 'newScript', function($scope, $http, $routeParams, newScript) {
 
-  $scope.newScript = newScript
-  console.log($scope.newScript.script.prescriptions);
-
   var patientID = $routeParams.patientid; //set this to current patient id $scope.current_user.id
+
+  $scope.newScript = newScript;
 
   //patients info
   $http.get('/api/patients/'+ patientID)
     .success(function(data, status, headers, config) {
       $scope.patient = data;
+      $scope.newScript.script.prescriptions = true;
+      $scope.prescriptions = data.prescriptions;
+      $scope.prescriptionIndex = $routeParams.prescriptionIndex;
   });
 
   // //patients doctors
