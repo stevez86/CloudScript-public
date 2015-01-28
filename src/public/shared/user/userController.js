@@ -1,6 +1,6 @@
-app.controller('PatientController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('UserController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
-  var patientID = $routeParams.patientid; //set this to current patient id $scope.current_user.id
+  var userID = $routeParams.userid; //set this to current patient id $scope.current_user.id
 
   //patients info
   $http.get('/api/patients/'+ patientID)

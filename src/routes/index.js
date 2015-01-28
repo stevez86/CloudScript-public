@@ -8,8 +8,6 @@ var request = require('request');
 
 router.get('/', require('./homepage'));
 
-router.get('/video/test', require('./video_test'));
-
 //API - USERS
 
 router.get('/api/users/:userid', require('./user_info'));
