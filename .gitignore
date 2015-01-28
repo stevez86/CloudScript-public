@@ -1,11 +1,11 @@
 .gitignore
-src/node_modules/
-npm-debug.log
 cloudscript.pem
-node_modules/
+src/package.json
 .elasticbeanstalk/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-src/package.json
+node_modules/
+src/node_modules/
+npm-debug.log
 src/npm-debug.log

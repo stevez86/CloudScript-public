@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var prescriptionSchema = new Schema({
   name:     String,
-  qty:      Number,
+  notes:    String,
   ordered:  Boolean,
   read:     Boolean
 });

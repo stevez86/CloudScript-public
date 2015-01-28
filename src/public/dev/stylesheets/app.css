@@ -1,0 +1,154 @@
+html {
+  /*background-color: #bbeeff;*/
+  background-image: url("/img/clouds_background.jpg");
+
+  background-attachment: fixed;
+  background-position: 60% 60%;
+}
+
+#header {
+
+  position: relative;
+  text-align: center;
+
+}
+
+#title {
+}
+
+#title h1 {
+  color: white;
+  font-size: 85px;
+  margin: 10px;
+  padding: 10px;
+}
+
+#content {
+  height: 100%;
+  background-color: white;
+}
+
+.padding {
+  padding: 10px;
+}
+
+#navbar {
+  background-color: transparent;
+  text-align: center;
+}
+
+#navbar a {
+  background-color: transparent;
+  color: black;
+  border-radius: 15px;
+  background-color: white;
+  opacity: 0.7;
+  border: 1px solid rgb(200,200,200);
+}
+
+#navbar a:hover {
+  /*background-color: transparent;*/
+  background-color: rgb(240,240,240);
+}
+
+#navbar .pure-menu-selected a {
+  /*background-color: transparent;*/
+  background-color: rgb(200,200,200);
+  color: white;
+}
+
+#mid {
+  background-color: rgb(200,200,200);;
+}
+
+#newrxform {
+
+}
+
+.formtext {
+  display: block;
+}
+
+.simple-form label {
+  max-width: 80%;
+  display: block;
+  margin: 0px 0px 18px 0px;
+}
+
+.formbutton {
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 0px;
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(200,200,200);
+}
+
+.formbutton:hover {
+  background-color: rgb(220,220,220);
+}
+
+#newscript {
+}
+
+/*
+Login Page
+*/
+#login {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
+                0 1px 1px rgba(0, 0, 0, .2),
+                0 3px 0 #fff,
+                0 4px 0 rgba(0, 0, 0, .2),
+                0 6px 0 #fff,
+                0 7px 0 rgba(0, 0, 0, .2);
+}
+#login {
+    position: absolute;
+    z-index: 0;
+}
+
+#login:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed #ccc;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    box-shadow: 0 0 0 1px #fff;
+}
+h1 {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
+    text-transform: uppercase;
+    text-align: center;
+    color: #666;
+    margin: 0 0 30px 0;
+    letter-spacing: 4px;
+    font: normal 26px/1 Verdana, Helvetica;
+    position: relative;
+}
+
+h1:after,
+h1:before {
+    background-color: #777;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 15px;
+    width: 120px;
+}
+
+h1:after {
+    right: 0;
+}
+
+h1:before {
+    background-image: linear-gradient(right, #777, #fff);
+    left: 0;
+}
+
+.doctor-messages {
+  color: red;
+}

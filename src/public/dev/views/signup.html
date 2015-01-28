@@ -1,0 +1,10 @@
+<h1>Sign up!</h1>
+<form name="register" ng-submit="submit(credentials)">
+  <label>Name:<input type="text" ng-model="credentials.name"></label><br>
+  <label>Address:<input type="text" ng-model="credentials.address"></label><br>
+  <label>Avatar Url:<input type="text" ng-model="credentials.avatar_url"></label><br>
+  <label>Email:<input type="text" ng-model="credentials.username"></label><br>
+  <label>Password:<input type="password" ng-model="credentials.password"></label><br>
+  <input type="hidden" ng-model="credentials.patient" value="true">
+  <input type="submit" value="Register">
+</form>
