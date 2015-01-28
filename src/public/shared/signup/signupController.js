@@ -1,4 +1,4 @@
-app.controller('registerController', ['$scope', '$location', '$http', '$cookies', function($scope, $cookies, $location, $http) {
+app.controller('signupController', ['$scope', '$location', '$http', '$cookies', function($scope, $cookies, $location, $http) {
   var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
   $scope.submit = function(credentials){
