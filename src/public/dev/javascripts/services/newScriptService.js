@@ -10,7 +10,7 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
 
   this.newOrder = function(rx) {
 
-      $http.post('/orders', rx)
+      $http.post('api/orders', rx)
       .success(function(data, status, headers, config) {
         self.orderData = data;
 

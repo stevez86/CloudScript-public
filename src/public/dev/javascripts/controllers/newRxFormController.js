@@ -11,7 +11,7 @@ app.controller('newRxFormController', ['$scope', '$http', '$firebase', 'newScrip
   };
 
   $scope.reset = function() {
-    // $scope.rx = angular.copy($scope.master);
+    $scope.rx = angular.copy($scope.master);
   };
 
   $scope.submit = function(rx) {
