@@ -13,6 +13,10 @@ app.controller('PatientController', ['$scope', '$http', '$routeParams', 'newScri
       $scope.prescriptionIndex = $routeParams.prescriptionIndex;
   });
 
+  $scope.getPrescriptionPage = function() {
+
+  };
+
   // //patients doctors
   // $http.get('/api/patients/'+ patientID + '/doctors')
   //   .success(function(data, status, headers, config) {
