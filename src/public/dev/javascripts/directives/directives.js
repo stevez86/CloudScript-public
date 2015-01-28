@@ -82,6 +82,13 @@ app.directive('prxs', function(){
   };
 });
 
+app.directive('rx', function(){
+  return {
+    restrict: 'E',
+    templateUrl: '../partials/patient/prescriptionView.html'
+  };
+});
+
 app.directive('neworder', function(){
   return {
     restrict: 'E',

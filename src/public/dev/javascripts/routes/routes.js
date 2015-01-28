@@ -31,8 +31,8 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl : 'views/patient/home.html'
     })
 
-    .when('/p/:patientid/orders/new', {
-        templateUrl : 'views/patient/new_order.html'
+    .when('/p/:patientid/orders/:orderid', {
+        templateUrl : 'views/patient/order.html'
     })
 
     .when('/p/:patientid/doctors/:doctorid', {
