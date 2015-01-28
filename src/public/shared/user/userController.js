@@ -1,20 +1,21 @@
 app.controller('UserController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
-  var userId = $routeParams.userId; //set this to current doctor id $scope.current_user.id
+  var userID = $routeParams.userid; //set this to current patient id $scope.current_user.id
 
-  //doctors info
-  $http.get('/api/user/'+ userId)
+  //patients info
+  $http.get('/api/patients/'+ patientID)
     .success(function(data, status, headers, config) {
-      $scope.user = data;
+      console.log(data);
+      $scope.patient = data;
   })
 
+  var doctorID = $routeParams.doctorid;
 
-  var patientID = $routeParams.patientid;
-  if (patientID) {
-    $http.get('/api/user/'+ userId + '/patients/' + patientID)
+  if (doctorID) {
+
+    $http.get('/api/patients/'+ patientID + '/doctors/' + doctorID)
       .success(function(data, status, headers, config) {
-        $scope.patient = data;
+        $scope.doctor = data;
     })
   }
-  
 }]);
