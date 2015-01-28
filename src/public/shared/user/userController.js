@@ -6,5 +6,4 @@ app.controller('userController', ['$scope', '$route', '$http', '$routeParams', '
     .success(function(data) {
       $scope.user = data;
     });
-
 }]);

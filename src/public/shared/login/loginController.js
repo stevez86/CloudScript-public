@@ -2,7 +2,6 @@ app.controller('loginController', ['$location', '$scope', '$cookies', '$http', f
   var ref = new Firebase("https://luminous-heat-3537.firebaseio.com");
 
   $scope.submit = function(credentials){
-
     ref.authWithPassword({
       email: $scope.credentials.username,
       password: $scope.credentials.password
@@ -16,7 +15,7 @@ app.controller('loginController', ['$location', '$scope', '$cookies', '$http', f
               })
         .success(function(data) {
           $location.path('/user/' + data.userId)
-          });
+        });
       }
     })
   }
