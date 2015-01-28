@@ -2,12 +2,12 @@ app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
 
     .when('/', {
-        templateUrl : '/home.html',
+        templateUrl : '../shared/login/login.html',
         controller  : 'loginController'
     })
 
     .when('/user/:userid/', {
-        templateUrl : 'shared/user.html',
+        templateUrl : '../shared/user/user.html',
         controller  : 'userController'
     })
 
