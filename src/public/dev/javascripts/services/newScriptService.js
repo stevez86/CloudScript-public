@@ -17,13 +17,6 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
         self.script.prescriptions = true;
         self.script.$save().then(function(ref) {}, function(error) {});
         console.log(self.script);
-        // var obj = $firebase(ref).$asObject();
-        // obj.prescriptions = "true";
-        // obj.$save().then(function(ref) {
-        //   ref.key() === obj.$id; // true
-        // }, function(error) {
-        //   console.log("Error:", error);
-        // });
       });
   };
 
