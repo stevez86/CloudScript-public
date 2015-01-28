@@ -16,7 +16,6 @@ app.service('newScript', ['$http', '$firebase', function($http, $firebase) {
 
         self.script.prescriptions = true;
         self.script.$save().then(function(ref) {}, function(error) {});
-        console.log(self.script);
       });
   };
 

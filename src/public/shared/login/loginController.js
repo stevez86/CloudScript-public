@@ -15,12 +15,8 @@ app.controller('loginController', ['$location', '$scope', '$cookies', '$http', f
                 params: {id: $cookies.id}
               })
         .success(function(data) {
-          if (data.userType === "doctor") {
-            $location.path('/doctor/' + data.userId)
-          } else if (data.userType === "patient") {
-            $location.path('/patient/' + data.userId)
-          } else { console.log("Error!") };
-        });
+          $location.path('/user/' + data.userId)
+          });
       }
     })
   }

@@ -1,12 +1,10 @@
-app.controller('ChatController', ['$scope', '$http', 'chatMessages', function($scope, $http, chatMessages) {
-
-  // Investigate ways to remove possible race condition of adding records to Firebase before all records removed from FireBase
+app.controller('ChatController', ['$scope', '$route', '$routeParams', '$http', 'chatMessages', function($scope, $route, $routeParams, $http, chatMessages) {
 
   $scope.messages = chatMessages;
 
   // Pulls all records from MongoDB and adds them to Firebase for display in client browser
 
-  $http.get("/api/messages")
+  $http.get("/api/messages?userid=" + $routeParams.userid)
     .success(function(data, status, headers, config) {
       for(var i = 0; i < data.length; i++) {
         $scope.messages.$add({content: data[i].content, timestamp: data[i].timestamp});

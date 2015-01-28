@@ -2,8 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var conversationSchema = new Schema({
-  patient: Schema.Types.ObjectId,
-  doctor:   Schema.Types.ObjectId,
+  users: [Schema.Types.ObjectId, Schema.Types.ObjectId],
   messages: Array
 });
 
