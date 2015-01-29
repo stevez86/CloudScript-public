@@ -5,22 +5,17 @@ app.service('newScript', ['$cookies', '$http', '$routeParams', '$route', '$fireb
   this.script = sync.$asObject();
 
   this.updateUserPrescriptions = function(rx) {
-
     $http.post('/api/users/' + $routeParams.userid + '/prescriptions', {name: rx.name, qty: rx.qty, prescribing_doctor: $cookies.id})
-      .success(function(data) {
-        console.log(data);
+      .success(function() {
+        self.script.prescriptions = true;
       });
   };
 
   this.newOrder = function(rx) {
-
-
-      $http.post('/api/orders', rx)
+    $http.post('/api/orders', rx)
       .success(function(data, status, headers, config) {
         self.orderData = data;
 
-        self.script.prescriptions = true;
-        console.log(self.script.prescriptions)
         self.script.$save().then(function(ref) {}, function(error) {});
       });
   };
