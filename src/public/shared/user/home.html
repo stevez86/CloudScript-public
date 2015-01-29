@@ -1,0 +1,40 @@
+<div id="header" class='pure-g'>
+  <div class="pure-u-1">
+    <h1>Welcome {{user.name}}!</h1>
+    <div id="navbar" class="pure-menu pure-menu-open pure-menu-horizontal" ng-if="user.patient">
+        <ul>
+            <li><a ng-href="#/user/{{user._id}}/profile">My Info</a></li>
+            <li class="pure-menu-selected"><a ng-href="#/user/{{user._id}}/home">My Doctors</a></li>
+            <li><a ng-href="#/user/{{user._id}}/home">My Prescriptions</a></li>
+        </ul>
+    </div>
+    <div id="navbar" class="pure-menu pure-menu-open pure-menu-horizontal" ng-if="user.doctor">
+        <ul>
+            <li><a ng-href="#/user/{{user._id}}/profile">My Info</a></li>
+            <li class="pure-menu-selected"><a ng-href="#/user/{{user._id}}/home">My Patients</a></li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+<div id="content" class='pure-g'>
+  <div id="left" class="pure-u-4-24 full-length">
+  </div>
+
+  <div id="mid" class="pure-u-10-24 full-length" ng-if="user.patient">
+    <div ng-repeat="doctor in user.doctors">
+      <a ng-href="#/user/{{doctor._id}}/profile">{{doctor.name}}</a>
+    </div>
+
+  </div>
+
+  <div id="mid" class="pure-u-10-24 full-length" ng-if="user.doctor">
+    <div ng-repeat="patient in user.patients">
+      <a ng-href="#/user/{{patient._id}}/profile">{{patient.name}}</a>
+    </div>
+  </div>
+
+  <div id="right" class="pure-u-10-24 full-length">
+    <h1 ng-show="newScript.script.prescriptions">newScript!</h1>
+  </div>
+</div>

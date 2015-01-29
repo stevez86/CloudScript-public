@@ -7,4 +7,4 @@ var messageSchema = new Schema({
   timestamp: Date
 });
 
-module.exports = mongoose.model('message', messageSchema);
+module.exports = mongoose.model('Message', messageSchema);

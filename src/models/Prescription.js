@@ -10,4 +10,4 @@ var prescriptionSchema = new Schema({
   prescribing_doctor: Schema.Types.ObjectId
 });
 
-module.exports = mongoose.model('prescription', prescriptionSchema);
+module.exports = mongoose.model('Prescription', prescriptionSchema);

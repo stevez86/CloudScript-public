@@ -14,7 +14,7 @@ app.controller('loginController', ['$location', '$scope', '$cookies', '$http', f
                 params: {id: $cookies.id}
               })
         .success(function(data) {
-          $location.path('/user/' + data.userId)
+          $location.path('/user/' + data.userId + '/home')
         });
       }
     })

@@ -6,8 +6,13 @@ app.config(['$routeProvider', function($routeProvider) {
         controller  : 'loginController'
     })
 
-    .when('/user/:userid', {
-        templateUrl : 'shared/user/user.html',
+    .when('/user/:userid/home', {
+        templateUrl : 'shared/user/home.html',
+        controller  : 'userController'
+    })
+
+    .when('/user/:userid/profile', {
+        templateUrl : 'shared/user/profile.html',
         controller  : 'userController'
     })
 

@@ -6,4 +6,4 @@ var conversationSchema = new Schema({
   messages: Array
 });
 
-module.exports = mongoose.model('conversation', conversationSchema);
+module.exports = mongoose.model('Conversation', conversationSchema);
