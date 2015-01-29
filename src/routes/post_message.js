@@ -8,22 +8,20 @@ module.exports = function(req, res, next) {
 
   User.findOne({firebase_id: req.query.sender}, function(err, user) {
 
-    var query = {users: { $in : [user._id, req.query.recipient] } }
-
     Message.create(req.body, function(err, message) {
 
-      Conversation.findOneAndUpdate(query, {$addToSet: {messages: message}, users: [user, req.query.recipient] }, {upsert: true}, function(err, conversation) {
+      var query = {users: { $in : [user._id, req.query.recipient] } }
 
-        console.log(conversation);
-        conversation.save(function(err, obj, numAffected) {
+      var update = {$addToSet: {messages: message}, users: [user, req.query.recipient] }
+
+      Conversation.findOneAndUpdate(query, update, {upsert: true}, function(err, conversation) {
+        conversation.save(function() {
+
           res.sendStatus(200);
+
         });
-
       });
-
-    })
-
+    });
   });
-
 };
 

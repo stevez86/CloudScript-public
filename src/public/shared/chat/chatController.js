@@ -5,9 +5,9 @@ app.controller('ChatController', ['$cookies', '$scope', '$route', '$routeParams'
   // Pulls all records from MongoDB and adds them to Firebase for display in client browser
 
   $http.get("/api/messages?recipient=" + $routeParams.userid + '&sender=' + $cookies.id)
-    .success(function(conversation) {
-      for (var i = 0; i < conversation.messages.length; i++) {
-        $scope.messages.$add(conversation.messages[i])
+    .success(function(messages) {
+      for (var i = 0; i < messages.length; i++) {
+        $scope.messages.$add(messages[i])
       };
     });
 

@@ -8,8 +8,7 @@ module.exports = function(req, res, next) {
     var query = {users: { $in : [user._id, req.query.recipient] } }
 
     Conversation.findOne(query, function(err, conversation) {
-      console.log(conversation);
-      res.json(conversation);
+      res.json(conversation.messages);
     });
   })
 
