@@ -9,7 +9,7 @@ var userSchema = new Schema({
   email:          String,
   doctor:         Boolean,
   patient:        Boolean,
-  prescriptions:  [Schema.Types.ObjectId],
+  prescriptions:  Schema.Types.Mixed,
   doctors:        [{ type: Schema.Types.ObjectId, ref: 'User' }],
   patients:       [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });

@@ -8,6 +8,7 @@ app.service('newScript', ['$cookies', '$http', '$routeParams', '$route', '$fireb
     $http.post('/api/users/' + $routeParams.userid + '/prescriptions', {name: rx.name, qty: rx.qty, prescribing_doctor: $cookies.id})
       .success(function() {
         self.script.prescriptions = true;
+        self.script.$save();
       });
   };
 

@@ -10,6 +10,6 @@
 <div ng-controller="newScriptController" ng-show="user.patient && newScript.script.prescriptions">
   <div id="newscript" class="glass l-box">
     <h1>New script!</h1>
-    <a ng-href="#/{{user._id}}/prescriptions/{{user.prescriptions.length - 1}}"><button>Show</button></a>
+    <a ng-href="#/{{user._id}}/prescriptions/{{user.prescriptions.length - 1}}"><button ng-click="getUserInfo()">Show</button></a>
   </div>
 </div>

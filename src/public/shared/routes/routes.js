@@ -16,4 +16,9 @@ app.config(['$routeProvider', function($routeProvider) {
         controller  : 'userController'
     })
 
+    .when('user/:userid/prescriptions/:prescriptionid',{
+        templateUrl : 'shared/prescriptions/prescription.html',
+        controller  : 'userController'
+    })
+
 }]);

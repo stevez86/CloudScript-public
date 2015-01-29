@@ -3,7 +3,15 @@ app.controller('userController', ['$scope', '$route', '$http', '$routeParams', '
   var userId = $routeParams.userid;
 
   $http.get('/api/users/' + userId)
+  .success(function(data) {
+    $scope.user = data;
+  });
+
+  $scope.getUserInfo = function(){
+  	$http.get('/api/users/' + userId)
     .success(function(data) {
       $scope.user = data;
+      console.log(data)
     });
+  }
 }]);
