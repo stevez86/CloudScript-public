@@ -1,1 +1,15 @@
-New Script!
+<div ng-controller="newScriptController" ng-show="user.doctor && !newScript.script.prescriptions">
+  <div id="newrxform">
+    <ng-form novalidate class="simple-form">
+      <label><span class="formtext">Drug Name: </span><input type="text" ng-model="rx.name" /></label>
+      <label><span class="formtext">Quantity: </span><input type="text" ng-model="rx.qty" /></label>
+      <button class="pure-button" ng-click="newScript.updateUserPrescriptions(rx)">Submit Prescription</button>
+    </ng-form>
+  </div>
+</div>
+<div ng-controller="newScriptController" ng-show="user.patient && newScript.script.prescriptions">
+  <div id="newscript" class="glass l-box">
+    <h1>New script!</h1>
+    <a ng-href="#/{{user._id}}/prescriptions/{{user.prescriptions.length - 1}}"><button>Show</button></a>
+  </div>
+</div>

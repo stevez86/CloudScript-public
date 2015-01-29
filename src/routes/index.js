@@ -8,20 +8,18 @@ var request = require('request');
 
 router.get('/', require('./homepage'));
 
-//API - USERS
-
 router.get('/api/users/:userid', require('./user_info'));
 
 router.post('/api/users', require('./create_user'));
 
-// OTHER
-
-router.get('/api/messages', require('./get_messages')); //to get all messages initially
+router.get('/api/messages', require('./get_messages'));
 
 router.post('/api/messages', require('./post_message'));
 
 router.get('/api/login', require('./validate_login'));
 
-router.post('/api/orders', require('./post_orders'));
+router.post('/api/delivery/quote', require('./post_orders'));
+
+router.post('/api/users/:userid/prescriptions', require('./new_prescription'));
 
 module.exports = router;
