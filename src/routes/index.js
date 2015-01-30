@@ -8,6 +8,10 @@ var request = require('request');
 
 router.get('/', require('./homepage'));
 
+router.get('/video', function(req, res) {
+  res.render('video');
+});
+
 router.get('/api/users/:userid', require('./user_info'));
 
 router.post('/api/users', require('./create_user'));
